@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "917591489292",
+    "project_id": "partypotion-16c3b",
+    "storage_bucket": "partypotion-16c3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917591489292:android:997a8845432b41dc84a729",
+        "android_client_info": {
+          "package_name": "com.dariuszkubica.party_potion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917591489292-u8oueb98t1go3epm3i8pe8gcgegn4fa0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1K5x33eWkxw6e5-7L5Tja1WsX4zMGo7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917591489292-u8oueb98t1go3epm3i8pe8gcgegn4fa0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "917591489292-1522jv957a9s5ho6m1fieachjoolom2k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.partyPotion"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
