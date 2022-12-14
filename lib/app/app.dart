@@ -25,69 +25,72 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundImageWidget(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           //------------------------------------------------------------------------------
           //          START SCAFFOLDA
           //          START PROFIL
           //------------------------------------------------------------------------------
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CircleAvatar(
-                maxRadius: 25,
-                backgroundColor: const Color(0xFF202020),
-                backgroundImage: const AssetImage('images/guest.png'),
-                child: ElevatedButton(
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(25),
-                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  maxRadius: 25,
+                  backgroundColor: const Color(0xFF202020),
+                  backgroundImage: const AssetImage('images/guest.png'),
+                  child: ElevatedButton(
+                    child: null,
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(25),
+                      backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           //------------------------------------------------------------------------------
           //          END PROFIL
-          //------------------------------------------------------------------------------
-          const SizedBox(height: 40), //SPACER
-          //------------------------------------------------------------------------------
           //          START LOGO
           //------------------------------------------------------------------------------
           const Image(
             image: AssetImage('images/logo.png'),
           ),
-          const SizedBox(
-            height: 20,
-          ),
           //------------------------------------------------------------------------------
-          //          KONICE LOGO
+          //          END LOGO
           //          START MENU
           //------------------------------------------------------------------------------
-          const SizedBox(height: 40), //SPACER
-          //------------------------------------------------------------------------------
-          AppMainButtonStyle(
-            text: 'DRINKI',
-            onPressed: () {},
-          ),
-          //------------------------------------------------------------------------------
-          const SizedBox(height: 20), //SPACER
-          //------------------------------------------------------------------------------
-          AppMainButtonStyle(
-            text: 'ULUBIONE',
-            onPressed: () {},
-          ),
-          //------------------------------------------------------------------------------
-          const SizedBox(height: 20), //SPACER
-          //------------------------------------------------------------------------------
-          AppMainButtonStyle(
-            text: 'ZAMÓWIENIE',
-            onPressed: () {},
+          Column(
+            children: [
+              AppMainButtonStyle(
+                text: 'DRINKI',
+                onPressed: () {},
+              ),
+              //------------------------------------------------------------------------------
+              const SizedBox(height: 20), //SPACER
+              //------------------------------------------------------------------------------
+              AppMainButtonStyle(
+                text: 'ULUBIONE',
+                onPressed: () {},
+              ),
+              //------------------------------------------------------------------------------
+              const SizedBox(height: 20), //SPACER
+              //------------------------------------------------------------------------------
+              AppMainButtonStyle(
+                text: 'ZAMÓWIENIE',
+                onPressed: () {},
+              ),
+            ],
           ),
         ],
       ),
     );
+    //------------------------------------------------------------------------------
+    //          END SCAFFOLD
+    //------------------------------------------------------------------------------
   }
 }
