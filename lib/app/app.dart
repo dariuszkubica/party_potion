@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
               CircleAvatar(
                 maxRadius: 25,
                 backgroundColor: const Color(0xFF202020),
-                /* backgroundImage: const AssetImage('images/avatar.png'), */
+                backgroundImage: const AssetImage('images/guest.png'),
                 child: ElevatedButton(
                   child: null,
                   style: ElevatedButton.styleFrom(
@@ -56,9 +56,9 @@ class HomePage extends StatelessWidget {
           //------------------------------------------------------------------------------
           //          START LOGO
           //------------------------------------------------------------------------------
-          /* const Image(
+          const Image(
             image: AssetImage('images/logo.png'),
-          ), */
+          ),
           const SizedBox(
             height: 20,
           ),
