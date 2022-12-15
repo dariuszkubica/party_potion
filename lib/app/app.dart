@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:party_potion/features/home/drinks/drings_page.dart';
 import 'package:party_potion/features/home/favorites/favorites_page.dart';
 import 'package:party_potion/features/home/order/order_page.dart';
 import 'package:party_potion/models/app_main_button_style.dart';
@@ -70,7 +71,10 @@ class HomePage extends StatelessWidget {
             children: [
               AppMainButtonStyle(
                 text: 'DRINKI',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => const Drinks()));
+                },
               ),
               //------------------------------------------------------------------------------
               const SizedBox(height: 20), //SPACER
