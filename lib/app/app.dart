@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:party_potion/features/home/favorites/favorites_page.dart';
 import 'package:party_potion/models/app_main_button_style.dart';
 import 'package:party_potion/models/background_image_widget.dart';
 
@@ -75,7 +76,10 @@ class HomePage extends StatelessWidget {
               //------------------------------------------------------------------------------
               AppMainButtonStyle(
                 text: 'ULUBIONE',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const Favorites()));
+                },
               ),
               //------------------------------------------------------------------------------
               const SizedBox(height: 20), //SPACER
