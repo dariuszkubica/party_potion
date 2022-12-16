@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
 import 'package:party_potion/features/account/alcohol/alcohol_list_pade.dart';
 import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
+import 'package:party_potion/features/account/friends/friends_list_page.dart';
 import 'package:party_potion/features/account/password/password_change_page.dart';
 import 'package:party_potion/models/app_main_button_style.dart';
 import 'package:party_potion/models/background_image_widget.dart';
@@ -67,8 +68,8 @@ class Account extends StatelessWidget {
                 AppMainButtonStyle(
                   text: 'Lista znajomych',
                   onPressed: () {
-                    /*  Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => FriendsList())); */
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => FriendsList()));
                   },
                 ),
 //------------------------------------------------------------------------------
