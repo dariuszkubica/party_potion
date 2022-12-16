@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
+import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
 import 'package:party_potion/models/app_main_button_style.dart';
 import 'package:party_potion/models/background_image_widget.dart';
 
@@ -84,8 +85,8 @@ class Account extends StatelessWidget {
                 AppMainButtonStyle(
                   text: 'Avatar',
                   onPressed: () {
-                    /*  Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const ChangeAvatar())); */
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const ChangeAvatar()));
                   },
                 ),
               ],
