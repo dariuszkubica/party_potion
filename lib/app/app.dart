@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:party_potion/features/account/account_page.dart';
 import 'package:party_potion/features/home/drinks/drings_page.dart';
 import 'package:party_potion/features/home/favorites/favorites_page.dart';
 import 'package:party_potion/features/home/order/order_page.dart';
@@ -39,18 +40,15 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CircleAvatar(
-                  maxRadius: 25,
-                  backgroundColor: const Color(0xFF202020),
-                  backgroundImage: const AssetImage('images/guest.png'),
-                  child: ElevatedButton(
-                    child: null,
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(25),
-                      backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-                    ),
-                    onPressed: () {},
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const Account()));
+                  },
+                  child: const CircleAvatar(
+                    maxRadius: 25,
+                    backgroundColor: Color(0xFF202020),
+                    backgroundImage: AssetImage('images/guest.png'),
                   ),
                 ),
               ],
