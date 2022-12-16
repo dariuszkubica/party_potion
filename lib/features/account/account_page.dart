@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:party_potion/app/cubit/root_cubit.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
 import 'package:party_potion/features/account/alcohol/alcohol_list_pade.dart';
 import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
@@ -10,10 +12,10 @@ import 'package:party_potion/models/background_image_widget.dart';
 class Account extends StatelessWidget {
   const Account({
     Key? key,
-    //required this.user,
+    required this.user,
   }) : super(key: key);
 
-  //final String? user;
+  final String? user;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +43,13 @@ class Account extends StatelessWidget {
                   Icons.logout,
                   size: 16,
                 ),
-                label: const Text(
-                  'Wyloguj || Zalogowany jako: ',
-                  style: TextStyle(fontSize: 12),
+                label: Text(
+                  'Wyloguj || Zalogowany jako: $user',
+                  style: const TextStyle(fontSize: 12),
                 ),
                 onPressed: () {
-                  /* 
-                  context.read<RootCubit>().signOut(); */
+                  context.read<RootCubit>().signOut();
+                  Navigator.of(context).pop();
                 },
               ),
             ),
@@ -62,9 +64,9 @@ class Account extends StatelessWidget {
                         builder: (_) => const AlcoholsList()));
                   },
                 ),
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 const SizedBox(height: 10), //SPACER
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 AppMainButtonStyle(
                   text: 'Lista znajomych',
                   onPressed: () {
@@ -72,9 +74,9 @@ class Account extends StatelessWidget {
                         .push(MaterialPageRoute(builder: (_) => FriendsList()));
                   },
                 ),
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 const SizedBox(height: 10), //SPACER
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 AppMainButtonStyle(
                   text: 'Zmiana hasła',
                   onPressed: () {
@@ -82,9 +84,9 @@ class Account extends StatelessWidget {
                         builder: (_) => const ChangePassword()));
                   },
                 ),
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 const SizedBox(height: 10), //SPACER
-//------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------
                 AppMainButtonStyle(
                   text: 'Avatar',
                   onPressed: () {
