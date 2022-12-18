@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/models/background_image_widget.dart';
-import 'package:party_potion/models/friends_window_style.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/common_widgets/friends_window_style.dart';
 import 'package:party_potion/features/account/friends/cubit/friends_list_cubit.dart';
 
 class FriendsList extends StatelessWidget {

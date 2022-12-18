@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 
 class AlcoholsList extends StatefulWidget {
   const AlcoholsList({

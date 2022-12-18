@@ -6,8 +6,8 @@ import 'package:party_potion/features/account/alcohol/alcohol_list_pade.dart';
 import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
 import 'package:party_potion/features/account/friends/friends_list_page.dart';
 import 'package:party_potion/features/account/password/password_change_page.dart';
-import 'package:party_potion/models/app_main_button_style.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/common_widgets/app_main_button_style.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 
 class Account extends StatelessWidget {
   const Account({

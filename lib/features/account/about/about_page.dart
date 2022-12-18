@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatelessWidget {

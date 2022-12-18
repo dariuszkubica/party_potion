@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/root_cubit.dart';
 import 'package:party_potion/features/account/account_page.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
