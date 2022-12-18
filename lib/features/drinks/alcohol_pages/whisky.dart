@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/models/alcohol_windows_small.dart';
+import 'package:party_potion/common_widgets/alcohol_windows_small.dart';
 
-class Tequila extends StatelessWidget {
-  const Tequila({super.key});
+class Whisky extends StatelessWidget {
+  const Whisky({super.key});
 
   @override
   Widget build(BuildContext context) {

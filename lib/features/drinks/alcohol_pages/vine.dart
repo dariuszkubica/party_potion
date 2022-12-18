@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/models/alcohol_windows_small.dart';
+import 'package:party_potion/common_widgets/alcohol_windows_small.dart';
 
 class Vine extends StatelessWidget {
   const Vine({super.key});

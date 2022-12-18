@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/brandy.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/gin.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/rum.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/teguila.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/vine.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/vodka.dart';
-import 'package:party_potion/features/home/drinks/alcohol_pages/whisky.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/brandy.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/gin.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/rum.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/teguila.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/vine.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/vodka.dart';
+import 'package:party_potion/features/drinks/alcohol_pages/whisky.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class Drinks extends StatefulWidget {
-  const Drinks({
+class DrinksPage extends StatefulWidget {
+  const DrinksPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<Drinks> createState() => _DrinksState();
+  State<DrinksPage> createState() => _DrinksState();
 }
 
-class _DrinksState extends State<Drinks> {
+class _DrinksState extends State<DrinksPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     Vodka(),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/models/background_image_widget.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({
+class Order extends StatelessWidget {
+  const Order({
     Key? key,
   }) : super(key: key);
 
@@ -21,11 +21,12 @@ class Favorites extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Lista Twoich ulubionych drinków',
+            'Lista drinków wybranych przez znajomych które mam przygotować',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
