@@ -11,7 +11,7 @@ class AlcoholsList extends StatefulWidget {
 }
 
 class _AlcoholsListState extends State<AlcoholsList> {
-  bool? _isWhyski = false;
+  bool? _isWhisky = false;
   bool? _isVodka = false;
   bool? _isTequila = false;
   bool? _isRum = false;
@@ -29,7 +29,7 @@ class _AlcoholsListState extends State<AlcoholsList> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CheckboxListTile(
-              title: const Text('Whyski',
+              title: const Text('Whisky',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               subtitle: const Text('Balentice / RedStag / etc',
                   style: TextStyle(fontSize: 12, color: Colors.white)),
@@ -38,10 +38,10 @@ class _AlcoholsListState extends State<AlcoholsList> {
                 color: Colors.white,
               ),
               controlAffinity: ListTileControlAffinity.leading,
-              value: _isWhyski,
+              value: _isWhisky,
               onChanged: (bool? newValue) {
                 setState(() {
-                  _isWhyski = newValue;
+                  _isWhisky = newValue;
                 });
               },
               activeColor: Colors.green,

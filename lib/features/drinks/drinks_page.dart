@@ -102,7 +102,7 @@ class _DrinksState extends State<DrinksPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.liquor),
-            label: 'Whyski',
+            label: 'Whisky',
             backgroundColor: Color(0xFF202020),
           ),
           BottomNavigationBarItem(
