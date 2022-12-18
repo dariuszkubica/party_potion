@@ -32,16 +32,15 @@ class _LoginPageState extends State<LoginPage> {
                 child: SingleChildScrollView(
                   reverse: true,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 100),
                       Text(
-                        isCreatingAccount == true
-                            ? 'Zarejestruj się'
-                            : 'Zaloguj się',
-                        style: const TextStyle(color: Colors.white),
+                        isCreatingAccount == true ? 'Rejestracja' : 'Logowanie',
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 32,
+                        ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 100),
                       TextField(
                         controller: emailController,
                         decoration: const InputDecoration(
@@ -49,8 +48,11 @@ class _LoginPageState extends State<LoginPage> {
                             Icons.login,
                             color: Colors.white,
                           ),
+                          labelText: 'E-mail',
+                          labelStyle: TextStyle(color: Colors.white),
+                          floatingLabelStyle: TextStyle(color: Colors.red),
                         ),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.red),
                       ),
                       TextField(
                         controller: passwordController,
@@ -59,8 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                             Icons.password,
                             color: Colors.white,
                           ),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white),
+                          floatingLabelStyle: TextStyle(color: Colors.red),
                         ),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.red),
                         obscureText: true,
                       ),
                       const SizedBox(height: 10),
