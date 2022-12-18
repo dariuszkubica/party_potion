@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:party_potion/models/friend_model.dart';
 
 part 'friends_list_state.dart';
 
@@ -10,7 +11,7 @@ class FriendsListCubit extends Cubit<FriendsListState> {
   FriendsListCubit()
       : super(
           const FriendsListState(
-            documents: [],
+            docs: [],
             errorMessage: '',
             isLoading: false,
           ),
@@ -23,15 +24,19 @@ class FriendsListCubit extends Cubit<FriendsListState> {
   }
 
   Future<void> addFriend(String text) async {
-    FirebaseFirestore.instance
-        .collection('friendslist')
-        .add({'friendname': text});
+    FirebaseFirestore.instance.collection('friendslist').add(
+      {
+        'friendName': text,
+        'avatar_url': '',
+        'favDrink': '',
+      },
+    );
   }
 
   Future<void> start() async {
     emit(
       const FriendsListState(
-        documents: [],
+        docs: [],
         errorMessage: '',
         isLoading: true,
       ),
@@ -39,12 +44,20 @@ class FriendsListCubit extends Cubit<FriendsListState> {
 
     _streamSubscription = FirebaseFirestore.instance
         .collection('friendslist')
-        .orderBy('friendname')
+        .orderBy('friendName')
         .snapshots()
         .listen((data) {
+      final friendModel = data.docs.map((doc) {
+        return FriendModel(
+          id: doc.id,
+          friendName: doc['friendName'],
+          avatarURL: doc['avatar_url'],
+          favDrink: doc['favDrink'],
+        );
+      }).toList();
       emit(
         FriendsListState(
-          documents: data.docs,
+          docs: friendModel,
           isLoading: false,
           errorMessage: '',
         ),
@@ -53,7 +66,7 @@ class FriendsListCubit extends Cubit<FriendsListState> {
       ..onError((error) {
         emit(
           FriendsListState(
-            documents: const [],
+            docs: const [],
             isLoading: false,
             errorMessage: error.toString(),
           ),

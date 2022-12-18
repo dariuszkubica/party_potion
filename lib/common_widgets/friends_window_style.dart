@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:party_potion/models/friend_model.dart';
 
 class AddFriends extends StatelessWidget {
-  const AddFriends(
-    this.friendname, {
+  const AddFriends({
+    required this.friendModel,
     Key? key,
   }) : super(key: key);
 
-  final String friendname;
+  final FriendModel friendModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class AddFriends extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
+              backgroundImage: NetworkImage(friendModel.avatarURL),
               radius: 40,
               backgroundColor: Colors.white30,
             ),
@@ -38,7 +40,7 @@ class AddFriends extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  friendname,
+                  friendModel.friendName,
                   style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,9 +49,9 @@ class AddFriends extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Ulubiony drink',
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                Text(
+                  friendModel.favDrink,
+                  style: const TextStyle(color: Colors.grey, fontSize: 16),
                 ),
               ],
             )

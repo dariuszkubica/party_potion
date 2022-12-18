@@ -64,7 +64,7 @@ class FriendsList extends StatelessWidget {
                         blendMode: BlendMode.dstOut,
                         child: BlocBuilder<FriendsListCubit, FriendsListState>(
                           builder: (context, state) {
-                            if (state.errorMessage.isNotEmpty) {
+                            /* if (state.errorMessage.isNotEmpty) {
                               return Center(
                                 child: Text(
                                   'Wystąpił nieoczekiwany problem: ${state.errorMessage}',
@@ -84,15 +84,15 @@ class FriendsList extends StatelessWidget {
                                   backgroundColor: Color(0xFF250000),
                                 ),
                               );
-                            }
-                            final documents = state.documents;
+                            } */
+                            final friendModels = state.docs;
                             return ListView(
                               children: [
                                 const Padding(
                                     padding: EdgeInsets.only(top: 10)),
-                                for (final document in documents) ...[
+                                for (final friendModel in friendModels) ...[
                                   Dismissible(
-                                    key: ValueKey(document.id),
+                                    key: ValueKey(friendModel.id),
                                     background: Container(
                                       width: double.infinity,
                                       height: 100,
@@ -176,9 +176,11 @@ class FriendsList extends StatelessWidget {
                                     onDismissed: (_) {
                                       context
                                           .read<FriendsListCubit>()
-                                          .deleteFriend(document.id);
+                                          .deleteFriend(friendModel.id);
                                     },
-                                    child: AddFriends(document['friendname']),
+                                    child: AddFriends(
+                                      friendModel: friendModel,
+                                    ),
                                   ),
                                 ],
                               ],
