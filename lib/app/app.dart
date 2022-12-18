@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/root_cubit.dart';
 import 'package:party_potion/features/account/login_page.dart';
-import 'package:party_potion/features/home/drinks/drings_page.dart';
+import 'package:party_potion/features/home/drinks/drinks_page.dart';
 import 'package:party_potion/features/home/favorites/favorites_page.dart';
 import 'package:party_potion/features/home/order/order_page.dart';
 import 'package:party_potion/models/app_inactive_button_style.dart';
