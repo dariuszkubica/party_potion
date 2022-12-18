@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/root_cubit.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
-import 'package:party_potion/features/account/alcohol/alcohol_list_pade.dart';
+import 'package:party_potion/features/account/alcohol/alcohol_list_page.dart';
 import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
 import 'package:party_potion/features/account/friends/friends_list_page.dart';
 import 'package:party_potion/features/account/password/password_change_page.dart';
