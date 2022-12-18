@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:party_potion/features/drinks/details/alcohol_window_details.dart';
 
 class AlcoholWindowSmall extends StatelessWidget {
   const AlcoholWindowSmall({
@@ -7,20 +8,23 @@ class AlcoholWindowSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.4),
-        border: Border.all(
-          width: 2,
-          color: Colors.black,
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const AlcoholWindowDetails()));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        decoration: BoxDecoration(
+          color: Colors.red.withOpacity(0.3),
+          border: Border.all(
+            width: 2,
+            color: Colors.black,
+          ),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(50),
+          ),
         ),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(50),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
