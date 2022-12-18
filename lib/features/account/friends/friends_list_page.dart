@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:party_potion/common_widgets/friends_window_style.dart';
 import 'package:party_potion/features/account/friends/cubit/friends_list_cubit.dart';
+import 'package:party_potion/repositories/friends_repository.dart';
 
 class FriendsList extends StatelessWidget {
   FriendsList({
@@ -14,7 +15,7 @@ class FriendsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FriendsListCubit()..start(),
+      create: (context) => FriendsListCubit(FriendsRepository())..start(),
       child: Builder(builder: (context) {
         return BackgroundImageWidget(
           child: SingleChildScrollView(
@@ -176,7 +177,8 @@ class FriendsList extends StatelessWidget {
                                     onDismissed: (_) {
                                       context
                                           .read<FriendsListCubit>()
-                                          .deleteFriend(friendModel.id);
+                                          .deleteFriend(
+                                              documentID: friendModel.id);
                                     },
                                     child: AddFriends(
                                       friendModel: friendModel,
