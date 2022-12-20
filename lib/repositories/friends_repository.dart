@@ -29,11 +29,7 @@ class FriendsRepository {
     await FirebaseFirestore.instance.collection('friendslist').add(
       {
         'friendName': friendName,
-<<<<<<< HEAD
         'favDrink': favDrink ?? 'Brak ulubionego drinka',
-=======
-        'favDrink': favDrink ?? 'Brak',
->>>>>>> 01541319b8b45aca1db7c4fea5b92b494c02bb31
         'avatar_url': avatarURL ??
             'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       },
