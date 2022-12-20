@@ -38,6 +38,7 @@ class ViewFriend extends StatelessWidget {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   friendModel.friendName,
