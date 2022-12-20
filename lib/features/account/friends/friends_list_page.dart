@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:party_potion/common_widgets/friends_window_style.dart';
+import 'package:party_potion/features/account/friends/add_friend.dart';
 import 'package:party_potion/features/account/friends/cubit/friends_list_cubit.dart';
 import 'package:party_potion/repositories/friends_repository.dart';
 
@@ -23,10 +24,11 @@ class FriendsList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                     height: 450,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.black12,
                       border: Border.all(
@@ -65,28 +67,7 @@ class FriendsList extends StatelessWidget {
                         blendMode: BlendMode.dstOut,
                         child: BlocBuilder<FriendsListCubit, FriendsListState>(
                           builder: (context, state) {
-                            /* if (state.errorMessage.isNotEmpty) {
-                              return Center(
-                                child: Text(
-                                  'Wystąpił nieoczekiwany problem: ${state.errorMessage}',
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              );
-                            }
-                            if (state.isLoading) {
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  color: Colors.red,
-                                  backgroundColor: Color(0xFF250000),
-                                ),
-                              );
-                            } */
-                            final friendModels = state.docs;
+                            final friendModels = state.items;
                             return ListView(
                               children: [
                                 const Padding(
@@ -180,7 +161,7 @@ class FriendsList extends StatelessWidget {
                                           .deleteFriend(
                                               documentID: friendModel.id);
                                     },
-                                    child: AddFriends(
+                                    child: ViewFriend(
                                       friendModel: friendModel,
                                     ),
                                   ),
@@ -192,52 +173,25 @@ class FriendsList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF250000).withOpacity(0.2),
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.white,
-                      ),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(25),
-                      ),
-                    ),
-                    padding:
-                        const EdgeInsets.only(left: 16, right: 16, bottom: 8),
-                    margin: const EdgeInsets.all(16),
-                    child: TextField(
-                      controller: friendsAddController,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  SizedBox(
-                    height: 40,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            side: const BorderSide(color: Colors.red),
-                          ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: const BorderSide(color: Colors.red),
                         ),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFF250000)),
                       ),
-                      onPressed: () {
-                        context
-                            .read<FriendsListCubit>()
-                            .addFriend(friendsAddController.text);
-                        friendsAddController.clear();
-                      },
-                      child: const Text('Dodaj znajomego'),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFF250000)),
                     ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const AddFriend()));
+                    },
+                    child: const Text('Dodaj znajomego'),
                   ),
                 ],
               ),
