@@ -3,12 +3,16 @@ part of 'friends_list_cubit.dart';
 @immutable
 class FriendsListState {
   const FriendsListState({
-    this.docs = const [],
-    this.isLoading = false,
+    this.saved = false,
     this.errorMessage = '',
+    this.items = const [],
+    this.loadingErrorOccured = false,
+    this.removingErrorOccured = false,
   });
 
-  final List<FriendModel> docs;
-  final bool isLoading;
+  final bool saved;
   final String errorMessage;
+  final List<FriendModel> items;
+  final bool loadingErrorOccured;
+  final bool removingErrorOccured;
 }

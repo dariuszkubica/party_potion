@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/models/friend_model.dart';
 
-class AddFriends extends StatelessWidget {
-  const AddFriends({
+class ViewFriend extends StatelessWidget {
+  const ViewFriend({
     required this.friendModel,
     Key? key,
   }) : super(key: key);

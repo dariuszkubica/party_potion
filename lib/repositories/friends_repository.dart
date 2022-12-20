@@ -13,8 +13,8 @@ class FriendsRepository {
           return FriendModel(
             id: doc.id,
             friendName: doc['friendName'],
-            avatarURL: doc['avatar_url'],
             favDrink: doc['favDrink'],
+            avatarURL: doc['avatar_url'],
           );
         },
       ).toList();
@@ -23,15 +23,15 @@ class FriendsRepository {
 
   Future<void> add(
     String friendName,
-    String? avatarURL,
     String? favDrink,
+    String? avatarURL,
   ) async {
     await FirebaseFirestore.instance.collection('friendslist').add(
       {
         'friendName': friendName,
-        'avatar_url':
-            'https://cdn.imgbin.com/2/4/15/imgbin-computer-icons-portable-network-graphics-avatar-icon-design-avatar-DsZ54Du30hTrKfxBG5PbwvzgE.jpg',
-        'favDrink': '',
+        'favDrink': favDrink ?? 'Brak ulubionego drinka',
+        'avatar_url': avatarURL ??
+            'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
       },
     );
   }
