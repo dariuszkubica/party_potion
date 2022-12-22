@@ -1,12 +1,12 @@
-part of 'root_cubit.dart';
+part of 'auth_cubit.dart';
 
 @immutable
-class RootState {
+class AuthState {
   final User? user;
   final bool isLoading;
   final String errorMessage;
 
-  const RootState({
+  const AuthState({
     required this.user,
     required this.isLoading,
     required this.errorMessage,

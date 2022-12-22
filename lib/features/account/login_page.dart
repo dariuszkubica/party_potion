@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/app/cubit/root_cubit.dart';
+import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/account_page.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
@@ -21,8 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RootCubit()..start(),
-      child: BlocBuilder<RootCubit, RootState>(
+      create: (context) => AuthCubit()..start(),
+      child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
           final user = state.user;
           if (user == null) {
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () async {
                           if (isCreatingAccount == true) {
                             try {
-                              await context.read<RootCubit>().register(
+                              await context.read<AuthCubit>().register(
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           } else {
                             try {
-                              await context.read<RootCubit>().signIn(
+                              await context.read<AuthCubit>().signIn(
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );

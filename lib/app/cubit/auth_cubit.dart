@@ -3,12 +3,12 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
-part 'root_state.dart';
+part 'auth_state.dart';
 
-class RootCubit extends Cubit<RootState> {
-  RootCubit()
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit()
       : super(
-          const RootState(
+          const AuthState(
             user: null,
             isLoading: false,
             errorMessage: '',
@@ -38,7 +38,7 @@ class RootCubit extends Cubit<RootState> {
 
   Future<void> start() async {
     emit(
-      const RootState(
+      const AuthState(
         user: null,
         isLoading: true,
         errorMessage: '',
@@ -47,7 +47,7 @@ class RootCubit extends Cubit<RootState> {
     _streamSubscription =
         FirebaseAuth.instance.authStateChanges().listen((user) {
       emit(
-        RootState(
+        AuthState(
           user: user,
           isLoading: false,
           errorMessage: '',
@@ -56,7 +56,7 @@ class RootCubit extends Cubit<RootState> {
     })
           ..onError((error) {
             emit(
-              RootState(
+              AuthState(
                 user: null,
                 isLoading: false,
                 errorMessage: error.toString(),

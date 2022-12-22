@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/app/cubit/root_cubit.dart';
+import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
 import 'package:party_potion/features/account/alcohol/alcohol_list_page.dart';
 import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
@@ -48,7 +48,7 @@ class Account extends StatelessWidget {
                   style: const TextStyle(fontSize: 12),
                 ),
                 onPressed: () {
-                  context.read<RootCubit>().signOut();
+                  context.read<AuthCubit>().signOut();
                   Navigator.of(context).pop();
                 },
               ),

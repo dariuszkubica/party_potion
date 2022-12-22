@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/app/cubit/root_cubit.dart';
+import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/login_page.dart';
 //import 'package:party_potion/features/drinks/details/alcohol_window_details.dart';
 import 'package:party_potion/features/drinks/drinks_page.dart';
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RootCubit, RootState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         final user = state.user;
         return BackgroundImageWidget(
