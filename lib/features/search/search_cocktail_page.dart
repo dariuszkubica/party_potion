@@ -6,7 +6,6 @@ import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_repository.dart';
-//import 'package:party_potion/common_widgets/background_image_widget.dart';
 
 class SearchCoctailPage extends StatelessWidget {
   const SearchCoctailPage({
@@ -21,7 +20,7 @@ class SearchCoctailPage extends StatelessWidget {
           CocktailSearchRemoteDataSource(),
         ),
       ),
-      child: BlocListener<CocktailCubit, CocktailState>(
+      child: BlocConsumer<CocktailCubit, CocktailState>(
         listener: (context, state) {
           if (state.status == Status.error) {
             final errorMessage = state.errorMessage ?? 'Unkown error';
@@ -33,31 +32,29 @@ class SearchCoctailPage extends StatelessWidget {
             );
           }
         },
-        child: BlocBuilder<CocktailCubit, CocktailState>(
-          builder: (context, state) {
-            final cocktailModel = state.model;
-            return BackgroundImageWidget(
-              /*  appBar: AppBar(
-                title: const Text('Cocktail'),
-              ), */
-              child: Builder(builder: (context) {
-                if (state.status == Status.loading) {
-                  return const Text('Loading');
-                }
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    if (cocktailModel != null)
-                      _DisplayCocktailWidget(
-                        cocktailModel: cocktailModel,
-                      ),
-                    _SearchWidget(),
-                  ],
-                );
-              }),
-            );
-          },
-        ),
+        builder: (context, state) {
+          final cocktailModel = state.model;
+          return BackgroundImageWidget(
+            /*  appBar: AppBar(
+              title: const Text('Cocktail'),
+            ), */
+            child: Builder(builder: (context) {
+              if (state.status == Status.loading) {
+                return const Text('Loading');
+              }
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  if (cocktailModel != null)
+                    _DisplayCocktailWidget(
+                      cocktailModel: cocktailModel,
+                    ),
+                  _SearchWidget(),
+                ],
+              );
+            }),
+          );
+        },
       ),
     );
   }
