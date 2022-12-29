@@ -6,4 +6,8 @@ class CocktailModel {
 
   final String name;
   final String instructions;
+
+  CocktailModel.fromJson(Map<String, dynamic> json)
+      : name = json['drinks'][0]['strDrink'],
+        instructions = json['drinks'][0]['strInstructions'];
 }

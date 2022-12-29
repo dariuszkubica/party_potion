@@ -9,20 +9,12 @@ class CocktailRepository {
   Future<CocktailModel?> getCocktailModel({
     required String cocktailName,
   }) async {
-    final responseData = await _cocktailSearchRemoteDataSource.getCocktailData(
+    final json = await _cocktailSearchRemoteDataSource.getCocktailData(
       cocktailName: cocktailName,
     );
-
-    if (responseData == null) {
+    if (json == null) {
       return null;
     }
-
-    final name = responseData['drinks'][0]['strDrink'];
-    final instruction = responseData['drinks'][0]['strInstructions'];
-
-    return CocktailModel(
-      name: name,
-      instructions: instruction,
-    );
+    return CocktailModel.fromJson(json);
   }
 }
