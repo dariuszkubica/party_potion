@@ -106,7 +106,7 @@ class _AddFriendState extends State<AddFriend> {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: const Text('Cofnij'),
+                              child: const Text('Back'),
                             ),
                           ),
                           SizedBox(
@@ -135,7 +135,7 @@ class _AddFriendState extends State<AddFriend> {
                                             _avatarImageURL,
                                           );
                                     },
-                              child: const Text('Dodaj znajomego'),
+                              child: const Text('Add friend'),
                             ),
                           ),
                         ],
@@ -186,7 +186,7 @@ class _AddFrinedBody extends StatelessWidget {
                   color: Color(0xFFFF0000),
                 ),
               ),
-              labelText: 'Imię',
+              labelText: 'Name',
               labelStyle: TextStyle(color: Colors.white30),
               floatingLabelStyle: TextStyle(color: Colors.white),
             ),
@@ -209,7 +209,7 @@ class _AddFrinedBody extends StatelessWidget {
                   color: Color(0xFFFF0000),
                 ),
               ),
-              labelText: 'Ulubiony drink',
+              labelText: 'Favorite cocktail',
               labelStyle: TextStyle(color: Colors.white30),
               floatingLabelStyle: TextStyle(color: Colors.white),
             ),

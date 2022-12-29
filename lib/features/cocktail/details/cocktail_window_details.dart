@@ -88,49 +88,49 @@ class CocktailWindowDetails extends StatelessWidget {
                                       Column(
                                         children: const [
                                           Text(
-                                            'Lista składników:',
+                                            'Ingriedents:',
                                             style: TextStyle(
                                                 color: Colors.red,
                                                 fontSize: 16),
                                           ),
                                           SizedBox(height: 5),
                                           Text(
-                                            'Składnik 1',
+                                            'Ingriedent 1',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 2',
+                                            'Ingriedent 2',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 3',
+                                            'Ingriedent 3',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 4',
+                                            'Ingriedent 4',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 5',
+                                            'Ingriedent 5',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 6',
+                                            'Ingriedent 6',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 7',
+                                            'Ingriedent 7',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
                                           Text(
-                                            'Składnik 8',
+                                            'Ingriedent 8',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
@@ -150,14 +150,14 @@ class CocktailWindowDetails extends StatelessWidget {
                                         child: Column(
                                           children: const [
                                             Text(
-                                              'Sposób przygotowania:',
+                                              'Instruction:',
                                               style: TextStyle(
                                                   color: Colors.red,
                                                   fontSize: 16),
                                             ),
                                             SizedBox(height: 5),
                                             Text(
-                                              'Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description ',
+                                              'Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),

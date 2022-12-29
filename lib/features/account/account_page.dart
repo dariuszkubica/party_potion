@@ -44,7 +44,7 @@ class Account extends StatelessWidget {
                   size: 16,
                 ),
                 label: Text(
-                  'Wyloguj || Zalogowany jako: $user',
+                  'Logout || Logged by: $user',
                   style: const TextStyle(fontSize: 12),
                 ),
                 onPressed: () {
@@ -58,7 +58,7 @@ class Account extends StatelessWidget {
             child: Column(
               children: [
                 AppMainButtonStyle(
-                  text: 'Lista alkoholi',
+                  text: 'Alcohol list',
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => const AlcoholsList()));
@@ -68,7 +68,7 @@ class Account extends StatelessWidget {
                 const SizedBox(height: 10), //SPACER
                 //------------------------------------------------------------------------------
                 AppMainButtonStyle(
-                  text: 'Lista znajomych',
+                  text: 'Friends list',
                   onPressed: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (_) => FriendsList()));
@@ -78,7 +78,7 @@ class Account extends StatelessWidget {
                 const SizedBox(height: 10), //SPACER
                 //------------------------------------------------------------------------------
                 AppMainButtonStyle(
-                  text: 'Zmiana hasła',
+                  text: 'Change password',
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => const ChangePassword()));
@@ -98,7 +98,7 @@ class Account extends StatelessWidget {
             ),
           ),
           AppMainButtonStyle(
-            text: 'O programie',
+            text: 'About',
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (_) => const About()));

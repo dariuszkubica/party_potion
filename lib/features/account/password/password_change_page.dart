@@ -27,7 +27,7 @@ class ChangePassword extends StatelessWidget {
                     MaterialStateProperty.all<Color>(const Color(0xFF250000)),
               ),
               onPressed: () {},
-              child: const Text('podaj stare hasło'),
+              child: const Text('old password'),
             ),
           ),
           const SizedBox(height: 20),
@@ -46,7 +46,7 @@ class ChangePassword extends StatelessWidget {
                     MaterialStateProperty.all<Color>(const Color(0xFF250000)),
               ),
               onPressed: () {},
-              child: const Text('podaj nowe hasło'),
+              child: const Text('new password'),
             ),
           ),
           const SizedBox(height: 20),
@@ -65,7 +65,7 @@ class ChangePassword extends StatelessWidget {
                     MaterialStateProperty.all<Color>(const Color(0xFF250000)),
               ),
               onPressed: () {},
-              child: const Text('powtórz nowe hasło'),
+              child: const Text('repeat new password'),
             ),
           ),
           const SizedBox(height: 100),
@@ -85,9 +85,9 @@ class ChangePassword extends StatelessWidget {
               ),
               icon: const Icon(Icons.lock_open),
               onPressed: () {
-                const Text('Hasło zostało zmienione');
+                const Text('Password has be changed');
               },
-              label: const Text('Zmień Hasło'),
+              label: const Text('Change Password'),
             ),
           ),
         ],

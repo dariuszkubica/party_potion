@@ -13,7 +13,7 @@ class About extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Aplikacja Stworzona przez:',
+            'App created by:',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,

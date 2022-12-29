@@ -48,7 +48,7 @@ class _CocktailsState extends State<CocktailsPage> {
               ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.check_box),
-                  label: const Text('Wyświetl liste z dostępnych składników')),
+                  label: const Text('Display list of anavable ingrediens')),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
@@ -82,7 +82,7 @@ class _CocktailsState extends State<CocktailsPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.liquor),
-            label: 'Wódka',
+            label: 'Vodka',
             backgroundColor: Color(0xFF202020),
           ),
           BottomNavigationBarItem(
@@ -112,7 +112,7 @@ class _CocktailsState extends State<CocktailsPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.liquor),
-            label: 'Wino',
+            label: 'Vine',
             backgroundColor: Color(0xFF202020),
           ),
         ],

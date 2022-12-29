@@ -50,9 +50,9 @@ class _AlcoholsListState extends State<AlcoholsList> {
               tileColor: Colors.white10,
             ),
             CheckboxListTile(
-              title: const Text('Wódka',
+              title: const Text('Vodka',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Wódka',
+              subtitle: const Text('Vodka',
                   style: TextStyle(fontSize: 12, color: Colors.white)),
               secondary: const Icon(
                 Icons.local_drink_sharp,
@@ -134,9 +134,9 @@ class _AlcoholsListState extends State<AlcoholsList> {
               tileColor: Colors.white10,
             ),
             CheckboxListTile(
-              title: const Text('Wino',
+              title: const Text('Vine',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Wino',
+              subtitle: const Text('Vine',
                   style: TextStyle(fontSize: 12, color: Colors.white)),
               secondary: const Icon(
                 Icons.local_drink_sharp,

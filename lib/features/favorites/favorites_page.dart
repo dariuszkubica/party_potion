@@ -13,7 +13,7 @@ class Favorites extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Text(
-            'Widget dostępny po zalogowaniu',
+            'Widget anavable after log in',
             style: TextStyle(
               color: Colors.deepOrange,
               fontSize: 16,
@@ -21,7 +21,7 @@ class Favorites extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Lista Twoich ulubionych drinków',
+            'List of your favorite cocktails',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,

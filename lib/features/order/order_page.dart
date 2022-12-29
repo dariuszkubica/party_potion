@@ -13,7 +13,7 @@ class Order extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Text(
-            'Widget dostępny po zalogowaniu',
+            'Widget anavable after log in',
             style: TextStyle(
               color: Colors.deepOrange,
               fontSize: 16,
@@ -21,7 +21,7 @@ class Order extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Lista drinków wybranych przez znajomych które mam przygotować',
+            'List of cocktail to prepare ordered by your friends',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,

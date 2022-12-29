@@ -57,21 +57,17 @@ class CocktailWindowSmall extends StatelessWidget {
                 Column(
                   children: [
                     const SizedBox(height: 15),
-                    const Text('Lista składników'),
+                    const Text('Ingredients'),
                     const SizedBox(height: 5),
                     SizedBox(
                       width: 100,
                       child: Column(
                         children: const [
-                          Text('Składnik 1'),
-                          Text('Składnik 2'),
-                          Text('Składnik 3'),
-                          Text('Składnik 4'),
-                          Text('Składnik 5'),
-                          Text('Składnik 6'),
-                          Text('Składnik 7'),
-                          Text('Składnik 8'),
-                          Text('Składnik 9'),
+                          Text('Ingredient 1'),
+                          Text('Ingredient 2'),
+                          Text('Ingredient 3'),
+                          Text('Ingredient 4'),
+                          Text('Ingredient 5'),
                         ],
                       ),
                     )

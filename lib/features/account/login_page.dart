@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Text(
-                        isCreatingAccount == true ? 'Rejestracja' : 'Logowanie',
+                        isCreatingAccount == true ? 'Register' : 'Login',
                         style: const TextStyle(
                           color: Colors.red,
                           fontSize: 32,
@@ -111,9 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                               const Color(0xFF250000)),
                         ),
                         child: Text(
-                          isCreatingAccount == true
-                              ? 'Zarejestruj się'
-                              : 'Zaloguj się',
+                          isCreatingAccount == true ? 'Register' : 'Login',
                           style: const TextStyle(color: Colors.white),
                         ),
                       ),
@@ -124,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                               isCreatingAccount = true;
                             });
                           },
-                          child: const Text('Utwórz konto'),
+                          child: const Text('Create account'),
                         ),
                       ],
                       if (isCreatingAccount == true) ...[
@@ -134,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                               isCreatingAccount = false;
                             });
                           },
-                          child: const Text('Masz już konto?'),
+                          child: const Text('You have account?'),
                         ),
                       ],
                     ],

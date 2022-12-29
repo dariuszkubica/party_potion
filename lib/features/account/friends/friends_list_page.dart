@@ -121,7 +121,7 @@ class FriendsList extends StatelessWidget {
                                             backgroundColor:
                                                 const Color(0xFF250000),
                                             content: const Text(
-                                              'Czy na pewno chcesz usunąć znajomego z listy?',
+                                              'Do you want delete your friend?',
                                               style: TextStyle(
                                                 color: Colors.white,
                                               ),
@@ -133,7 +133,7 @@ class FriendsList extends StatelessWidget {
                                                       .pop(false);
                                                 },
                                                 child: const Text(
-                                                  'Nie',
+                                                  'No',
                                                   style: TextStyle(
                                                     color: Colors.white,
                                                   ),
@@ -145,7 +145,7 @@ class FriendsList extends StatelessWidget {
                                                         .pop(true);
                                                   },
                                                   child: const Text(
-                                                    'Tak',
+                                                    'Yes',
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                     ),
@@ -191,7 +191,7 @@ class FriendsList extends StatelessWidget {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (_) => const AddFriend()));
                     },
-                    child: const Text('Dodaj znajomego'),
+                    child: const Text('Add friend'),
                   ),
                 ],
               ),
