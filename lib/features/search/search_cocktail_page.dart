@@ -35,22 +35,22 @@ class SearchCoctailPage extends StatelessWidget {
         builder: (context, state) {
           final cocktailModel = state.model;
           return BackgroundImageWidget(
-            /*  appBar: AppBar(
-              title: const Text('Cocktail'),
-            ), */
             child: Builder(builder: (context) {
               if (state.status == Status.loading) {
                 return const Text('Loading');
               }
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (cocktailModel != null)
-                    _DisplayCocktailWidget(
-                      cocktailModel: cocktailModel,
-                    ),
-                  _SearchWidget(),
-                ],
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    if (cocktailModel != null)
+                      _DisplayCocktailWidget(
+                        cocktailModel: cocktailModel,
+                      ),
+                    _SearchWidget(),
+                  ],
+                ),
               );
             }),
           );
@@ -72,26 +72,120 @@ class _DisplayCocktailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CocktailCubit, CocktailState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            Text(
-              cocktailModel.name,
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+        return Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.red.withOpacity(0.1),
+                border: Border.all(
+                  width: 2,
+                  color: Colors.black,
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(50),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.2),
+                    spreadRadius: 0,
+                    blurRadius: 50,
+                    offset: const Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expanded(
+                          child: AspectRatio(
+                            aspectRatio: 1,
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  NetworkImage(cocktailModel.imageURL),
+                              backgroundColor: Colors.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Column(
+                              children: [
+                                Text(
+                                  cocktailModel.name,
+                                  style: const TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 5),
+                                const Text(
+                                  'Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description ',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: ListView(
+                        padding: const EdgeInsets.all(8.0),
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(children: const [
+                                    Text(
+                                      'Ingredients:',
+                                      style: TextStyle(
+                                          color: Colors.red, fontSize: 16),
+                                    ),
+                                    SizedBox(height: 5),
+                                  ])
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          'Instruction:',
+                                          style: TextStyle(
+                                              color: Colors.red, fontSize: 16),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          cocktailModel.instructions,
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            Text(
-              cocktailModel.instructions,
-              style: const TextStyle(
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-                color: Colors.white,
-              ),
-            ),
-          ],
+          ),
         );
       },
     );
