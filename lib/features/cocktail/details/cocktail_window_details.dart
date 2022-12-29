@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class AlcoholWindowDetails extends StatelessWidget {
-  const AlcoholWindowDetails({
+class CocktailWindowDetails extends StatelessWidget {
+  const CocktailWindowDetails({
     Key? key,
   }) : super(key: key);
 

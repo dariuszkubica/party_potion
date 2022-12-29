@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/common_widgets/alcohol_windows_small.dart';
+import 'package:party_potion/common_widgets/cocktail_windows_small.dart';
 
-class Vine extends StatelessWidget {
-  const Vine({super.key});
+class Gin extends StatelessWidget {
+  const Gin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,11 @@ class Vine extends StatelessWidget {
             children: [
               Column(
                 children: const [
-                  AlcoholWindowSmall(),
-                  AlcoholWindowSmall(),
-                  AlcoholWindowSmall(),
-                  AlcoholWindowSmall(),
-                  AlcoholWindowSmall(),
+                  CocktailWindowSmall(),
+                  CocktailWindowSmall(),
+                  CocktailWindowSmall(),
+                  CocktailWindowSmall(),
+                  CocktailWindowSmall(),
                 ],
               ),
             ],

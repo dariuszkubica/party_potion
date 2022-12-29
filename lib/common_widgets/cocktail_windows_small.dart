@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/features/drinks/details/alcohol_window_details.dart';
+import 'package:party_potion/features/cocktail/details/cocktail_window_details.dart';
 
-class AlcoholWindowSmall extends StatelessWidget {
-  const AlcoholWindowSmall({
+class CocktailWindowSmall extends StatelessWidget {
+  const CocktailWindowSmall({
     Key? key,
   }) : super(key: key);
 
@@ -11,7 +11,7 @@ class AlcoholWindowSmall extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const AlcoholWindowDetails()));
+            MaterialPageRoute(builder: (_) => const CocktailWindowDetails()));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
