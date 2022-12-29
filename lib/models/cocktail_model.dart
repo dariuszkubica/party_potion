@@ -1,9 +1,9 @@
 class CocktailModel {
   const CocktailModel({
-    required this.cocktailName,
-    required this.cocktailDescription,
+    required this.name,
+    required this.instructions,
   });
 
-  final String cocktailName;
-  final String cocktailDescription;
+  final String name;
+  final String instructions;
 }

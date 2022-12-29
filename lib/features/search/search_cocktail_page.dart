@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
+import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_repository.dart';
@@ -14,7 +16,11 @@ class SearchCoctailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CocktailCubit(CocktailRepository()),
+      create: (context) => CocktailCubit(
+        CocktailRepository(
+          CocktailSearchRemoteDataSource(),
+        ),
+      ),
       child: BlocListener<CocktailCubit, CocktailState>(
         listener: (context, state) {
           if (state.status == Status.error) {
@@ -30,27 +36,25 @@ class SearchCoctailPage extends StatelessWidget {
         child: BlocBuilder<CocktailCubit, CocktailState>(
           builder: (context, state) {
             final cocktailModel = state.model;
-            return Scaffold(
-              appBar: AppBar(
+            return BackgroundImageWidget(
+              /*  appBar: AppBar(
                 title: const Text('Cocktail'),
-              ),
-              body: Center(
-                child: Builder(builder: (context) {
-                  if (state.status == Status.loading) {
-                    return const Text('Loading');
-                  }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      if (cocktailModel != null)
-                        _DisplayCocktailWidget(
-                          cocktailModel: cocktailModel,
-                        ),
-                      _SearchWidget(),
-                    ],
-                  );
-                }),
-              ),
+              ), */
+              child: Builder(builder: (context) {
+                if (state.status == Status.loading) {
+                  return const Text('Loading');
+                }
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    if (cocktailModel != null)
+                      _DisplayCocktailWidget(
+                        cocktailModel: cocktailModel,
+                      ),
+                    _SearchWidget(),
+                  ],
+                );
+              }),
             );
           },
         ),
@@ -74,15 +78,22 @@ class _DisplayCocktailWidget extends StatelessWidget {
         return Column(
           children: [
             Text(
-              cocktailModel.cocktailName,
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              cocktailModel.name,
+              style: const TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             Text(
-              cocktailModel.cocktailDescription,
-              style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+              cocktailModel.instructions,
+              style: const TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.white,
+              ),
             ),
-            const SizedBox(height: 60),
           ],
         );
       },
@@ -107,20 +118,47 @@ class _SearchWidget extends StatelessWidget {
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text('Cocktail Name'),
-                hintText: 'Margarita',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Color(0xFFFFFFFF),
+                    width: 1,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Color(0xFFFF0000),
+                  ),
+                ),
+                labelText: 'Cocktail Name',
+                labelStyle: TextStyle(color: Colors.white),
+                floatingLabelStyle: TextStyle(color: Colors.white),
               ),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           const SizedBox(width: 20),
-          ElevatedButton(
-            onPressed: () {
-              context
-                  .read<CocktailCubit>()
-                  .getCocktailModel(cocktailName: _controller.text);
-            },
-            child: const Text('Get'),
+          SizedBox(
+            width: 80,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    side: const BorderSide(color: Colors.red),
+                  ),
+                ),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xFF250000)),
+              ),
+              onPressed: () {
+                context
+                    .read<CocktailCubit>()
+                    .getCocktailModel(cocktailName: _controller.text);
+              },
+              child: const Text('Get'),
+            ),
           ),
         ],
       ),
