@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/login_page.dart';
-//import 'package:party_potion/features/drinks/details/alcohol_window_details.dart';
-import 'package:party_potion/features/drinks/drinks_page.dart';
+import 'package:party_potion/features/cocktail/cocktails_page.dart';
 import 'package:party_potion/features/favorites/favorites_page.dart';
 import 'package:party_potion/features/order/order_page.dart';
 import 'package:party_potion/common_widgets/app_inactive_button_style.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/features/search/search_cocktail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -64,10 +64,20 @@ class HomePage extends StatelessWidget {
               Column(
                 children: [
                   AppMainButtonStyle(
-                    text: 'DRINKI',
+                    text: 'COCKTAILS',
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const DrinksPage()));
+                          builder: (_) => const CocktailsPage()));
+                    },
+                  ),
+                  //------------------------------------------------------------------------------
+                  const SizedBox(height: 20), //SPACER
+                  //------------------------------------------------------------------------------
+                  AppMainButtonStyle(
+                    text: 'SEARCH',
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const SearchCoctailPage()));
                     },
                   ),
                   //------------------------------------------------------------------------------
@@ -75,7 +85,7 @@ class HomePage extends StatelessWidget {
                   //------------------------------------------------------------------------------
                   if (user != null) ...[
                     AppMainButtonStyle(
-                      text: 'ULUBIONE',
+                      text: 'FAVORITES',
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => const Favorites()));
@@ -83,7 +93,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ] else ...[
                     const AppInactiveButtonStyle(
-                      text: 'ULUBIONE',
+                      text: 'FAVORITES',
                     ),
                   ],
                   //------------------------------------------------------------------------------
@@ -92,7 +102,7 @@ class HomePage extends StatelessWidget {
 
                   if (user != null) ...[
                     AppMainButtonStyle(
-                      text: 'ZAMÓWIENIE',
+                      text: 'ORDER',
                       onPressed: () {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => const Order()));
@@ -100,7 +110,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ] else ...[
                     const AppInactiveButtonStyle(
-                      text: 'ZAMÓWIENIE',
+                      text: 'ORDER',
                     ),
                   ],
                 ],
