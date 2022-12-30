@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/cocktail_windows_small.dart';
 
-class Vine extends StatelessWidget {
-  const Vine({super.key});
+class Wine extends StatelessWidget {
+  const Wine({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:party_potion/features/cocktail/alcohol_pages/brandy.dart';
 import 'package:party_potion/features/cocktail/alcohol_pages/gin.dart';
 import 'package:party_potion/features/cocktail/alcohol_pages/rum.dart';
 import 'package:party_potion/features/cocktail/alcohol_pages/teguila.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/vine.dart';
+import 'package:party_potion/features/cocktail/alcohol_pages/wine.dart';
 import 'package:party_potion/features/cocktail/alcohol_pages/vodka.dart';
 import 'package:party_potion/features/cocktail/alcohol_pages/whisky.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
@@ -26,7 +26,7 @@ class _CocktailsState extends State<CocktailsPage> {
     Tequila(),
     Whisky(),
     Brandy(),
-    Vine(),
+    Wine(),
   ];
 
   void _onItemTapped(int index) {
@@ -112,7 +112,7 @@ class _CocktailsState extends State<CocktailsPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.liquor),
-            label: 'Vine',
+            label: 'Wine',
             backgroundColor: Color(0xFF202020),
           ),
         ],
