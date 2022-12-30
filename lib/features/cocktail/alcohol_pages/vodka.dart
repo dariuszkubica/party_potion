@@ -37,12 +37,10 @@ class Vodka extends StatelessWidget {
           child: ListView(
             children: [
               Column(
-                children: const [
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
+                children: [
+                  for (int i = 0; i < 5; i++) ...[
+                    const CocktailWindowSmall(),
+                  ]
                 ],
               ),
             ],

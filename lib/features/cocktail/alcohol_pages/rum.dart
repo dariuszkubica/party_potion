@@ -36,15 +36,9 @@ class Rum extends StatelessWidget {
           blendMode: BlendMode.dstOut,
           child: ListView(
             children: [
-              Column(
-                children: const [
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                  CocktailWindowSmall(),
-                ],
-              ),
+              for (int i = 0; i < 10; i++) ...[
+                const CocktailWindowSmall(),
+              ]
             ],
           ),
         ),
