@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
@@ -77,7 +78,7 @@ class _DisplayCocktailWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 16),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.black54,
                 border: Border.all(
                   width: 2,
                   color: Colors.black,
@@ -98,84 +99,77 @@ class _DisplayCocktailWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  NetworkImage(cocktailModel.imageURL),
-                              backgroundColor: Colors.black.withOpacity(0.3),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Column(
-                              children: [
-                                Text(
-                                  cocktailModel.name,
-                                  style: const TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description ',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+                    AspectRatio(
+                      aspectRatio: 1.3,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(cocktailModel.imageURL),
+                        backgroundColor: Colors.white.withOpacity(0.3),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Column(
+                        children: [
+                          Text(
+                            cocktailModel.name,
+                            style: const TextStyle(
+                                color: Colors.red,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: ListView(
                         padding: const EdgeInsets.all(8.0),
                         children: [
-                          Column(
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        'Ingredients:',
+                                        style: TextStyle(
+                                            color: Colors.red, fontSize: 16),
+                                      ),
+                                      const SizedBox(height: 5),
+                                      IngredientWidget(
+                                        ingredientsList:
+                                            cocktailModel.ingredientsList,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Row(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(children: const [
-                                    Text(
-                                      'Ingredients:',
-                                      style: TextStyle(
-                                          color: Colors.red, fontSize: 16),
-                                    ),
-                                    SizedBox(height: 5),
-                                  ])
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      children: [
-                                        const Text(
-                                          'Instruction:',
-                                          style: TextStyle(
-                                              color: Colors.red, fontSize: 16),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Text(
-                                          cocktailModel.instructions,
-                                          style: const TextStyle(
-                                              color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        'Instruction:',
+                                        style: TextStyle(
+                                            color: Colors.red, fontSize: 16),
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Text(
+                                        cocktailModel.instructions,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ],
