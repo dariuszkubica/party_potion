@@ -18,7 +18,7 @@ class CocktailWindowDetails extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.1),
+                    color: Colors.black26,
                     border: Border.all(
                       width: 2,
                       color: Colors.black,
@@ -39,132 +39,57 @@ class CocktailWindowDetails extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              child: AspectRatio(
-                                aspectRatio: 1,
-                                child: CircleAvatar(
-                                  backgroundColor:
-                                      Colors.black.withOpacity(0.3),
-                                ),
-                              ),
+                        Expanded(
+                          child: AspectRatio(
+                            aspectRatio: 1,
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  const AssetImage('images/me.jpg'),
+                              backgroundColor: Colors.black.withOpacity(0.3),
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      'Drink Name',
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      'Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description Drink Description ',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
+                          ),
+                        ),
+                        const Text(
+                          'Drink Name',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold),
                         ),
                         Expanded(
                           child: ListView(
                             padding: const EdgeInsets.all(8.0),
                             children: [
                               Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: const [
-                                          Text(
-                                            'Ingriedents:',
-                                            style: TextStyle(
-                                                color: Colors.red,
-                                                fontSize: 16),
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            'Ingriedent 1',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 2',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 3',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 4',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 5',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 6',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 7',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Ingriedent 8',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Text(
-                                            'Składnik 9',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                children: const [
+                                  Text(
+                                    'Ingrediens:',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          children: const [
-                                            Text(
-                                              'Instruction:',
-                                              style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontSize: 16),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Text(
-                                              'Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                  SizedBox(height: 10),
+                                  Text('Ingredient 1',
+                                      style: TextStyle(color: Colors.white)),
+                                  Text('Ingredient 2',
+                                      style: TextStyle(color: Colors.white)),
+                                  Text('Ingredient 3',
+                                      style: TextStyle(color: Colors.white)),
+                                  Text('Ingredient 4',
+                                      style: TextStyle(color: Colors.white)),
+                                  Text('Ingredient 5',
+                                      style: TextStyle(color: Colors.white)),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Instruction:',
+                                    style: TextStyle(
+                                        color: Colors.red, fontSize: 16),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction',
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ],
                               ),

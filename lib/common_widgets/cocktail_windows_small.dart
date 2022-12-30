@@ -16,7 +16,12 @@ class CocktailWindowSmall extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.3),
+          color: Colors.black87,
+          image: const DecorationImage(
+            image: AssetImage('images/me.jpg'),
+            fit: BoxFit.cover,
+            opacity: 0.3,
+          ),
           border: Border.all(
             width: 2,
             color: Colors.black,
@@ -29,45 +34,34 @@ class CocktailWindowSmall extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: Colors.black.withOpacity(0.3),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const Text('Drink name'),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Row(
-                      children: const [
-                        Text('Drink description'),
-                      ],
-                    )
-                  ],
+                const Text(
+                  'Drink name',
+                  style: TextStyle(color: Colors.white),
                 ),
                 Column(
                   children: [
-                    const SizedBox(height: 15),
-                    const Text('Ingredients'),
+                    const Text(
+                      'Ingredients:',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     const SizedBox(height: 5),
                     SizedBox(
                       width: 100,
                       child: Column(
                         children: const [
-                          Text('Ingredient 1'),
-                          Text('Ingredient 2'),
-                          Text('Ingredient 3'),
-                          Text('Ingredient 4'),
-                          Text('Ingredient 5'),
+                          Text('Ingredient 1',
+                              style: TextStyle(color: Colors.white)),
+                          Text('Ingredient 2',
+                              style: TextStyle(color: Colors.white)),
+                          Text('Ingredient 3',
+                              style: TextStyle(color: Colors.white)),
+                          Text('Ingredient 4',
+                              style: TextStyle(color: Colors.white)),
+                          Text('Ingredient 5',
+                              style: TextStyle(color: Colors.white)),
                         ],
                       ),
                     )
