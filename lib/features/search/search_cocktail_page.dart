@@ -96,7 +96,7 @@ class _DisplayCocktailWidget extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     AspectRatio(
@@ -106,71 +106,38 @@ class _DisplayCocktailWidget extends StatelessWidget {
                         backgroundColor: Colors.white.withOpacity(0.3),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Column(
-                        children: [
-                          Text(
-                            cocktailModel.name,
-                            style: const TextStyle(
-                                color: Colors.red,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
+                    const SizedBox(height: 15),
+                    Text(
+                      cocktailModel.name,
+                      style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: ListView(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        'Ingredients:',
-                                        style: TextStyle(
-                                            color: Colors.red, fontSize: 16),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      IngredientWidget(
-                                        ingredientsList:
-                                            cocktailModel.ingredientsList,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                          const Text(
+                            'Ingredients:',
+                            style: TextStyle(color: Colors.red, fontSize: 16),
+                            textAlign: TextAlign.center,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        'Instruction:',
-                                        style: TextStyle(
-                                            color: Colors.red, fontSize: 16),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        cocktailModel.instructions,
-                                        style: const TextStyle(
-                                            color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
+                          const SizedBox(height: 5),
+                          IngredientWidget(
+                            ingredientsList: cocktailModel.ingredientsList,
+                          ),
+                          const SizedBox(height: 15),
+                          const Text(
+                            'Instruction:',
+                            style: TextStyle(color: Colors.red, fontSize: 16),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            cocktailModel.instructions,
+                            style: const TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
