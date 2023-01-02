@@ -6,7 +6,7 @@ import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
-import 'package:party_potion/repositories/cocktail_repository.dart';
+import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
 class SearchCoctailPage extends StatelessWidget {
   const SearchCoctailPage({
@@ -17,7 +17,7 @@ class SearchCoctailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CocktailCubit(
-        CocktailRepository(
+        CocktailSearchRepository(
           CocktailSearchRemoteDataSource(),
         ),
       ),
@@ -207,7 +207,7 @@ class _SearchWidget extends StatelessWidget {
               onPressed: () {
                 context
                     .read<CocktailCubit>()
-                    .getCocktailModel(cocktailName: _controller.text);
+                    .getCocktailModelByName(cocktailName: _controller.text);
               },
               child: const Text('Get'),
             ),

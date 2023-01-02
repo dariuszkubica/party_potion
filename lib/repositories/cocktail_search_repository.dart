@@ -1,12 +1,12 @@
 import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 
-class CocktailRepository {
-  CocktailRepository(this._cocktailSearchRemoteDataSource);
+class CocktailSearchRepository {
+  CocktailSearchRepository(this._cocktailSearchRemoteDataSource);
 
   final CocktailSearchRemoteDataSource _cocktailSearchRemoteDataSource;
 
-  Future<CocktailModel?> getCocktailModel({
+  Future<CocktailModel?> getCocktailModelByName({
     required String cocktailName,
   }) async {
     final json = await _cocktailSearchRemoteDataSource.getCocktailData(
