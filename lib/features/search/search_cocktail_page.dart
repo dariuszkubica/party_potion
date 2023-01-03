@@ -4,7 +4,7 @@ import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
-import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
+import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
@@ -16,12 +16,12 @@ class SearchCoctailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CocktailCubit(
+      create: (context) => SearchCocktailCubit(
         CocktailSearchRepository(
           CocktailSearchRemoteDataSource(),
         ),
       ),
-      child: BlocConsumer<CocktailCubit, CocktailState>(
+      child: BlocConsumer<SearchCocktailCubit, SearchCocktailState>(
         listener: (context, state) {
           if (state.status == Status.error) {
             final errorMessage = state.errorMessage ?? 'Unkown error';
@@ -71,7 +71,7 @@ class _DisplayCocktailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CocktailCubit, CocktailState>(
+    return BlocBuilder<SearchCocktailCubit, SearchCocktailState>(
       builder: (context, state) {
         return Expanded(
           child: Padding(
@@ -206,7 +206,7 @@ class _SearchWidget extends StatelessWidget {
               ),
               onPressed: () {
                 context
-                    .read<CocktailCubit>()
+                    .read<SearchCocktailCubit>()
                     .getCocktailModelByName(cocktailName: _controller.text);
               },
               child: const Text('Get'),
