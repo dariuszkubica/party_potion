@@ -135,7 +135,7 @@ class _DisplayCocktailWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            cocktailModel.instructions,
+                            cocktailModel.instructions ?? '',
                             style: const TextStyle(color: Colors.white),
                             textAlign: TextAlign.center,
                           ),

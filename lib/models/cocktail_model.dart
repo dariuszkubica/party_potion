@@ -2,19 +2,22 @@ import 'package:party_potion/models/ingredient_model.dart';
 
 class CocktailModel {
   const CocktailModel({
+    //required this.id,
     required this.name,
-    required this.instructions,
+    this.instructions,
     required this.imageURL,
     required this.ingredientsList,
   });
 
+  //final String id;
   final String name;
-  final String instructions;
+  final String? instructions;
   final String imageURL;
   final List<IngredientModel> ingredientsList;
 
   CocktailModel.fromJson(Map<String, dynamic> json)
-      : name = json['drinks'][0]['strDrink'],
+      : //id = json['drinks'][0]['idDrink'],
+        name = json['drinks'][0]['strDrink'],
         instructions = json['drinks'][0]['strInstructions'],
         imageURL = json['drinks'][0]['strDrinkThumb'],
         ingredientsList = _getIngredients(json);
