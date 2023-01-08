@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 
 class CocktailWindowDetails extends StatelessWidget {
@@ -50,6 +53,7 @@ class CocktailWindowDetails extends StatelessWidget {
                 const SizedBox(height: 15),
                 Text(
                   cocktailModel.name,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                       color: Colors.red,
                       fontSize: 24,
@@ -60,7 +64,7 @@ class CocktailWindowDetails extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     children: [
                       Column(
-                        children: const [
+                        children: [
                           Text(
                             'Ingrediens:',
                             style: TextStyle(
@@ -69,16 +73,9 @@ class CocktailWindowDetails extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 10),
-                          Text('Ingredient 1',
-                              style: TextStyle(color: Colors.white)),
-                          Text('Ingredient 2',
-                              style: TextStyle(color: Colors.white)),
-                          Text('Ingredient 3',
-                              style: TextStyle(color: Colors.white)),
-                          Text('Ingredient 4',
-                              style: TextStyle(color: Colors.white)),
-                          Text('Ingredient 5',
-                              style: TextStyle(color: Colors.white)),
+                          IngredientWidget(
+                              ingredientsList:
+                                  cocktailModel.ingredientsList ?? []),
                           SizedBox(height: 10),
                           Text(
                             'Instruction:',
@@ -86,7 +83,7 @@ class CocktailWindowDetails extends StatelessWidget {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction Drink Instruction',
+                            cocktailModel.instructions ?? 'Empty',
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:party_potion/common_widgets/ingredient_widget.dart';
+import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/features/cocktail/details/cocktail_window_details.dart';
 import 'package:party_potion/models/cocktail_model.dart';
@@ -56,19 +58,17 @@ class CocktailWindowSmall extends StatelessWidget {
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
-                    AspectRatio(
-                      aspectRatio: 1,
-                      child: Column(
-                        children: const [
-                          Text(
-                            'Ingredients:',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          SizedBox(height: 5),
-                          /* IngredientWidget(
-                              ingredientsList: cocktailModel.ingredientsList), */
-                        ],
-                      ),
+                    Column(
+                      children: [
+                        Text(
+                          'Ingredients:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(height: 5),
+                        IngredientWidget(
+                            ingredientsList:
+                                cocktailModel.ingredientsList ?? []),
+                      ],
                     )
                   ],
                 ),
