@@ -1,3 +1,5 @@
-Expanded        Taki Container który wypełnia cały dostępny obszar
+Expanded        Taki Container który wypełnia cały dostępny obszar (Głównie zastosowanie to Column i Row)
 AspecRatio      Ustawienie procentowej proporcji elementu
 Enum            Tworzenie własnego wariantu błędów/wystąpień
+Wrap            Zawijanie tekstu
+funkcja .where  filtrowanie na liście bazy danych
