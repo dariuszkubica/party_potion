@@ -1,125 +1,213 @@
 import 'package:flutter/material.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/brandy.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/gin.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/rum.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/teguila.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/wine.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/vodka.dart';
-import 'package:party_potion/features/cocktail/alcohol_pages/whisky.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:party_potion/app/core/enums.dart';
+import 'package:party_potion/common_widgets/cocktail_windows_small.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_data_source.dart';
+import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
+import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 
-class CocktailsPage extends StatefulWidget {
+class CocktailsPage extends StatelessWidget {
   const CocktailsPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<CocktailsPage> createState() => _CocktailsState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => CocktailCubit(
+        CocktailIngredientRepository(
+          CocktailIngredientRemoteDataSource(),
+        ),
+      )..getCocktailModelsByAlcohol(alcoholName: 'vodka'),
+      child: BlocConsumer<CocktailCubit, CocktailState>(
+        listener: (context, state) {
+          if (state.status == Status.error) {
+            final errorMessage = state.errorMessage ?? 'Unkown error';
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return BackgroundImageWidget(
+            child: Builder(
+              builder: (context) {
+                if (state.status == Status.loading) {
+                  return const CircularProgressIndicator();
+                }
+                return Column(
+                  children: [
+                    const _Filters(),
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.red,
+                          ),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        child: ShaderMask(
+                          shaderCallback: (Rect rect) {
+                            return const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.red,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.red,
+                              ],
+                              stops: [0.0, 0.05, 0.95, 1.0],
+                            ).createShader(rect);
+                          },
+                          blendMode: BlendMode.dstOut,
+                          child: const _DisplayCocktails(),
+                        ),
+                      ),
+                    ),
+                    const _CocktailSelectByAlcohol(),
+                  ],
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
 }
 
-class _CocktailsState extends State<CocktailsPage> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Vodka(),
-    Gin(),
-    Rum(),
-    Tequila(),
-    Whisky(),
-    Brandy(),
-    Wine(),
-  ];
+class _Filters extends StatelessWidget {
+  const _Filters({
+    Key? key,
+  }) : super(key: key);
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  var bgcolor = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF202020),
-      body: BackgroundImageWidget(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.check_box),
-                  label: const Text('Display list of anavable ingrediens')),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white10,
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.black38,
-                    ),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(50),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.2),
-                        spreadRadius: 0,
-                        blurRadius: 50,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: _widgetOptions.elementAt(_selectedIndex),
-                  ),
-                ),
-              ),
-            ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Text(
+          'Filtry',
+          style: TextStyle(
+            color: Colors.white,
           ),
+        )
+      ],
+    );
+  }
+}
+
+class _DisplayCocktails extends StatelessWidget {
+  const _DisplayCocktails({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CocktailCubit, CocktailState>(
+      builder: (context, state) {
+        return ListView(
+          children: [
+            Column(
+              children: [
+                for (final cocktailModel in state.models) ...[
+                  CocktailWindowSmall(
+                    cocktailModel: cocktailModel,
+                  ),
+                ],
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _CocktailSelectByAlcohol extends StatelessWidget {
+  const _CocktailSelectByAlcohol({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'vodka');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Vodka',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Gin',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Rum',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Tequila',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Whisky',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Brandy',
-            backgroundColor: Color(0xFF202020),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.liquor),
-            label: 'Wine',
-            backgroundColor: Color(0xFF202020),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
-        onTap: _onItemTapped,
-      ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'rum');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'tequila');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'whisky');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'gin');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'wine');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {
+            context
+                .read<CocktailCubit>()
+                .getCocktailModelsByAlcohol(alcoholName: 'brandy');
+          },
+          icon: const Icon(Icons.local_drink),
+          color: Colors.white,
+        ),
+      ],
     );
   }
 }

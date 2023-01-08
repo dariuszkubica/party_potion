@@ -11,16 +11,17 @@ class CocktailCubit extends Cubit<CocktailState> {
 
   final CocktailIngredientRepository _cocktailIngredientRepository;
 
-  Future<void> getCocktailModelByAlcohol({
+
+  Future<void> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
     emit(const CocktailState(status: Status.loading));
     try {
-      final cocktailModel = await _cocktailIngredientRepository
-          .getCocktailModelByAlcohol(alcoholName: alcoholName);
+      final drinks = await _cocktailIngredientRepository
+          .getCocktailModelsByAlcohol(alcoholName: alcoholName);
       emit(
         CocktailState(
-          model: cocktailModel,
+          models: drinks,
           status: Status.success,
         ),
       );

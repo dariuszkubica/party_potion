@@ -6,15 +6,21 @@ class CocktailIngredientRepository {
 
   final CocktailIngredientRemoteDataSource _cocktailIngredientRemoteDataSource;
 
-  Future<CocktailModel?> getCocktailModelByAlcohol({
+  Future<List<CocktailModel>> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
     final json = await _cocktailIngredientRemoteDataSource.getCocktailData(
       alcoholName: alcoholName,
     );
     if (json == null) {
-      return null;
+      return [];
     }
-    return CocktailModel.fromJson(json);
+    try {
+      final drinks = json['drinks'] as List;
+
+      return drinks.map((e) => CocktailModel.fromJson(e)).toList();
+    } catch (e) {
+      return [];
+    }
   }
 }

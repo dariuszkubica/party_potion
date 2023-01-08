@@ -23,6 +23,7 @@ class CocktailWindowSmall extends StatelessWidget {
                 builder: (_) => const CocktailWindowDetails()));
           },
           child: Container(
+            height: 200,
             margin: const EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
               color: Colors.black87,
