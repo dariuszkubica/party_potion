@@ -15,6 +15,6 @@ class CocktailSearchRepository {
     if (json == null) {
       return null;
     }
-    return CocktailModel.fromJson(json);
+    return CocktailModel.fromJson(json['drinks'][0]);
   }
 }

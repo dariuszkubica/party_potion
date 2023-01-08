@@ -125,7 +125,8 @@ class _DisplayCocktailWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           IngredientWidget(
-                            ingredientsList: cocktailModel.ingredientsList,
+                            ingredientsList:
+                                cocktailModel.ingredientsList ?? [],
                           ),
                           const SizedBox(height: 15),
                           const Text(
