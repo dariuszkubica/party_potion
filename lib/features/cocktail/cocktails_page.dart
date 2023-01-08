@@ -11,7 +11,6 @@ class CocktailsPage extends StatelessWidget {
   const CocktailsPage({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

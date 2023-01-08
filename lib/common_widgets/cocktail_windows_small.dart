@@ -20,10 +20,12 @@ class CocktailWindowSmall extends StatelessWidget {
         return InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => const CocktailWindowDetails()));
+                builder: (_) => CocktailWindowDetails(
+                      cocktailModel: cocktailModel,
+                    )));
           },
           child: Container(
-            height: 200,
+            height: 150,
             margin: const EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
               color: Colors.black87,
@@ -47,20 +49,26 @@ class CocktailWindowSmall extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      cocktailModel.name,
-                      style: const TextStyle(color: Colors.white),
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: Text(
+                        cocktailModel.name,
+                        style: const TextStyle(color: Colors.white),
+                      ),
                     ),
-                    Column(
-                      children: const [
-                        Text(
-                          'Ingredients:',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(height: 5),
-                        /* IngredientWidget(
-                            ingredientsList: cocktailModel.ingredientsList), */
-                      ],
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: Column(
+                        children: const [
+                          Text(
+                            'Ingredients:',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(height: 5),
+                          /* IngredientWidget(
+                              ingredientsList: cocktailModel.ingredientsList), */
+                        ],
+                      ),
                     )
                   ],
                 ),

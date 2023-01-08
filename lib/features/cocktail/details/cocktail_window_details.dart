@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/models/cocktail_model.dart';
 
 class CocktailWindowDetails extends StatelessWidget {
   const CocktailWindowDetails({
     Key? key,
+    required this.cocktailModel,
   }) : super(key: key);
+
+  final CocktailModel cocktailModel;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +42,15 @@ class CocktailWindowDetails extends StatelessWidget {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: CircleAvatar(
-                      backgroundImage: const AssetImage('images/me.jpg'),
+                      backgroundImage: NetworkImage(cocktailModel.imageURL),
                       backgroundColor: Colors.black.withOpacity(0.3),
                     ),
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Text(
-                  'Drink Name',
-                  style: TextStyle(
+                Text(
+                  cocktailModel.name,
+                  style: const TextStyle(
                       color: Colors.red,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
