@@ -9,26 +9,36 @@ class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundImageWidget(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'Widget anavable after log in',
-            style: TextStyle(
-              color: Colors.deepOrange,
-              fontSize: 16,
-            ),
+      child: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/work_in_progress.png'),
+            fit: BoxFit.fill,
+            opacity: 0.3,
           ),
-          SizedBox(height: 20),
-          Text(
-            'List of cocktail to prepare ordered by your friends',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              'Widget anavable after log in',
+              style: TextStyle(
+                color: Colors.deepOrange,
+                fontSize: 16,
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            SizedBox(height: 20),
+            Text(
+              'List of cocktail to prepare ordered by your friends',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
