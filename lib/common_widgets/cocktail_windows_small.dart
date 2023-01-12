@@ -21,7 +21,7 @@ class CocktailWindowSmall extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (_) => CocktailWindowDetails(
-                  cocktailModel: cocktailModel,
+                  cocktailName: cocktailModel.name,
                 ),
               ),
             );
