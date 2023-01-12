@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:party_potion/common_widgets/ingredient_widget.dart';
@@ -65,26 +63,26 @@ class CocktailWindowDetails extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(
+                          const Text(
                             'Ingrediens:',
                             style: TextStyle(
                               color: Colors.red,
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           IngredientWidget(
                               ingredientsList:
                                   cocktailModel.ingredientsList ?? []),
-                          SizedBox(height: 10),
-                          Text(
+                          const SizedBox(height: 10),
+                          const Text(
                             'Instruction:',
                             style: TextStyle(color: Colors.red, fontSize: 16),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             cocktailModel.instructions ?? 'Empty',
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
