@@ -115,17 +115,16 @@ class _DisplayCocktails extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CocktailCubit, CocktailState>(
       builder: (context, state) {
-        return ListView(
+        return GridView.count(
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 5,
+          crossAxisCount: 2,
           children: [
-            Column(
-              children: [
-                for (final cocktailModel in state.models) ...[
-                  CocktailWindowSmall(
-                    cocktailModel: cocktailModel,
-                  ),
-                ],
-              ],
-            ),
+            for (final cocktailModel in state.models) ...[
+              CocktailWindowSmall(
+                cocktailModel: cocktailModel,
+              ),
+            ],
           ],
         );
       },

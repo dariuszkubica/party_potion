@@ -1,8 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/features/cocktail/details/cocktail_window_details.dart';
 import 'package:party_potion/models/cocktail_model.dart';
@@ -21,59 +18,34 @@ class CocktailWindowSmall extends StatelessWidget {
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).push(
+              MaterialPageRoute(
                 builder: (_) => CocktailWindowDetails(
-                      cocktailModel: cocktailModel,
-                    )));
-          },
-          child: Container(
-            height: 150,
-            margin: const EdgeInsets.symmetric(vertical: 5),
-            decoration: BoxDecoration(
-              color: Colors.black87,
-              image: DecorationImage(
-                image: NetworkImage(cocktailModel.imageURL),
-                fit: BoxFit.cover,
-                opacity: 0.3,
-              ),
-              border: Border.all(
-                width: 2,
-                color: Colors.black,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(50),
-              ),
-            ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    AspectRatio(
-                      aspectRatio: 1,
-                      child: Text(
-                        cocktailModel.name,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'Ingredients:',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(height: 5),
-                        IngredientWidget(
-                            ingredientsList:
-                                cocktailModel.ingredientsList ?? []),
-                      ],
-                    )
-                  ],
+                  cocktailModel: cocktailModel,
                 ),
               ),
-            ),
+            );
+          },
+          child: Column(
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage((cocktailModel.imageURL)),
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.black,
+                radius: 60,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                cocktailModel.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         );
       },
