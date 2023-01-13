@@ -148,8 +148,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'vodka');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/vodka.png'),
+          iconSize: 40,
+          tooltip: 'Vodka',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -157,8 +159,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'rum');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/rum.png'),
+          iconSize: 40,
+          tooltip: 'Rum',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -166,8 +170,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'tequila');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/tequila.png'),
+          iconSize: 40,
+          tooltip: 'Tequila',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -175,8 +181,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'whisky');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/whisky.png'),
+          iconSize: 40,
+          tooltip: 'Whisky',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -184,8 +192,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'gin');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/gin.png'),
+          iconSize: 40,
+          tooltip: 'Gin',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -193,8 +203,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'wine');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/wine.png'),
+          iconSize: 40,
+          tooltip: 'Wine',
+          highlightColor: Colors.black,
         ),
         IconButton(
           onPressed: () {
@@ -202,8 +214,10 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .read<CocktailCubit>()
                 .getCocktailModelsByAlcohol(alcoholName: 'brandy');
           },
-          icon: const Icon(Icons.local_drink),
-          color: Colors.white,
+          icon: Image.asset('images/icon/brandy.png'),
+          iconSize: 40,
+          tooltip: 'Brandy',
+          highlightColor: Colors.black,
         ),
       ],
     );
