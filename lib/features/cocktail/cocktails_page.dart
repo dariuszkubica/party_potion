@@ -149,7 +149,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'vodka');
           },
           icon: Image.asset('images/icon/vodka.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Vodka',
           highlightColor: Colors.black,
         ),
@@ -160,7 +160,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'rum');
           },
           icon: Image.asset('images/icon/rum.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Rum',
           highlightColor: Colors.black,
         ),
@@ -171,7 +171,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'tequila');
           },
           icon: Image.asset('images/icon/tequila.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Tequila',
           highlightColor: Colors.black,
         ),
@@ -182,7 +182,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'whisky');
           },
           icon: Image.asset('images/icon/whisky.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Whisky',
           highlightColor: Colors.black,
         ),
@@ -193,7 +193,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'gin');
           },
           icon: Image.asset('images/icon/gin.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Gin',
           highlightColor: Colors.black,
         ),
@@ -204,7 +204,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'wine');
           },
           icon: Image.asset('images/icon/wine.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Wine',
           highlightColor: Colors.black,
         ),
@@ -215,7 +215,7 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
                 .getCocktailModelsByAlcohol(alcoholName: 'brandy');
           },
           icon: Image.asset('images/icon/brandy.png'),
-          iconSize: 40,
+          iconSize: 35,
           tooltip: 'Brandy',
           highlightColor: Colors.black,
         ),
