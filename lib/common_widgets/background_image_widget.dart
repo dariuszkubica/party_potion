@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:party_potion/app/core/config.dart';
 
 class BackgroundImageWidget extends StatelessWidget {
   final Widget child;
@@ -12,7 +13,7 @@ class BackgroundImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PartyPotion'),
+        title: Text(Config.helloMessage),
         backgroundColor: Colors.transparent,
         toolbarOpacity: 0.4,
         toolbarHeight: 30,

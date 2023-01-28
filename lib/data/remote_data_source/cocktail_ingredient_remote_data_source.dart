@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:party_potion/app/core/config.dart';
 
 class CocktailIngredientRemoteDataSource {
   Future<Map<String, dynamic>?> getCocktailData({
@@ -6,7 +7,7 @@ class CocktailIngredientRemoteDataSource {
   }) async {
     try {
       final reponse = await Dio().get<Map<String, dynamic>>(
-          'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=$alcoholName');
+          '${Config.cocktailIngredientRemoteDataSource}$alcoholName');
       return reponse.data;
     } on DioError catch (error) {
       throw Exception(error.response?.data ?? 'Unknow error');
