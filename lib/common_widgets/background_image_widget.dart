@@ -12,12 +12,14 @@ class BackgroundImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(Config.helloMessage),
-        backgroundColor: Colors.transparent,
-        toolbarOpacity: 0.4,
-        toolbarHeight: 30,
-      ),
+      appBar: Config.appFlavor == Flavor.production
+          ? null
+          : AppBar(
+              title: Text(Config.helloMessage),
+              backgroundColor: Colors.transparent,
+              toolbarOpacity: 0.4,
+              toolbarHeight: 30,
+            ),
       backgroundColor: const Color(0xFF202020),
       body: Container(
         constraints: const BoxConstraints.expand(),

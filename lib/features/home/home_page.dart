@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:party_potion/app/core/config.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/login_page.dart';
 import 'package:party_potion/features/cocktail/cocktails_page.dart';
@@ -83,36 +84,39 @@ class HomePage extends StatelessWidget {
                   //------------------------------------------------------------------------------
                   const SizedBox(height: 20), //SPACER
                   //------------------------------------------------------------------------------
-                  if (user != null) ...[
-                    AppMainButtonStyle(
-                      text: 'FAVORITES',
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const Favorites()));
-                      },
-                    ),
-                  ] else ...[
-                    const AppInactiveButtonStyle(
-                      text: 'FAVORITES',
-                    ),
-                  ],
-                  //------------------------------------------------------------------------------
-                  const SizedBox(height: 20), //SPACER
-                  //------------------------------------------------------------------------------
+                  if (Config.appFlavor == Flavor.production)
+                    (const SizedBox())
+                  else
+                    (Column(
+                      children: [
+                        user != null
+                            ? AppMainButtonStyle(
+                                text: 'FAVORITES',
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (_) => const Favorites()));
+                                },
+                              )
+                            : const AppInactiveButtonStyle(
+                                text: 'FAVORITES',
+                              ),
 
-                  if (user != null) ...[
-                    AppMainButtonStyle(
-                      text: 'ORDER',
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => const Order()));
-                      },
-                    ),
-                  ] else ...[
-                    const AppInactiveButtonStyle(
-                      text: 'ORDER',
-                    ),
-                  ],
+                        //------------------------------------------------------------------------------
+                        const SizedBox(height: 20), //SPACER
+                        //------------------------------------------------------------------------------
+                        user != null
+                            ? AppMainButtonStyle(
+                                text: 'ORDER',
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (_) => const Order()));
+                                },
+                              )
+                            : const AppInactiveButtonStyle(
+                                text: 'ORDER',
+                              ),
+                      ],
+                    ))
                 ],
               ),
             ],
