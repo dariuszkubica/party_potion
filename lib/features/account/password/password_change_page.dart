@@ -9,15 +9,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class ChangePassword extends StatefulWidget {
-  const ChangePassword({
+class ChangePasswordPage extends StatefulWidget {
+  const ChangePasswordPage({
     Key? key,
   }) : super(key: key);
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<ChangePasswordPage> createState() => _ChangePasswordState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _ChangePasswordState extends State<ChangePasswordPage> {
   var errorMessage = '';
   final String newPass = '';
 

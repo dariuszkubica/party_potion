@@ -6,8 +6,8 @@ import 'package:party_potion/features/account/friends/add_friend.dart';
 import 'package:party_potion/features/account/friends/cubit/friends_list_cubit.dart';
 import 'package:party_potion/repositories/friends_repository.dart';
 
-class FriendsList extends StatelessWidget {
-  FriendsList({
+class FriendsListPage extends StatelessWidget {
+  FriendsListPage({
     Key? key,
   }) : super(key: key);
 

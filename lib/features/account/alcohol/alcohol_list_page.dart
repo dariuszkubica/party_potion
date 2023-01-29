@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class AlcoholsList extends StatefulWidget {
-  const AlcoholsList({
+class AlcoholsListPage extends StatefulWidget {
+  const AlcoholsListPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<AlcoholsList> createState() => _AlcoholsListState();
+  State<AlcoholsListPage> createState() => _AlcoholsListState();
 }
 
-class _AlcoholsListState extends State<AlcoholsList> {
+class _AlcoholsListState extends State<AlcoholsListPage> {
   bool? _isWhisky = false;
   bool? _isVodka = false;
   bool? _isTequila = false;

@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
                                 text: 'FAVORITES',
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (_) => const Favorites()));
+                                      builder: (_) => const FavoritesPage()));
                                 },
                               )
                             : const AppInactiveButtonStyle(
@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
                                 text: 'ORDER',
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (_) => const Order()));
+                                      builder: (_) => const OrderPage()));
                                 },
                               )
                             : const AppInactiveButtonStyle(

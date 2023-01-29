@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class Order extends StatelessWidget {
-  const Order({
+class OrderPage extends StatelessWidget {
+  const OrderPage({
     Key? key,
   }) : super(key: key);
 

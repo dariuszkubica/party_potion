@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({
     Key? key,
   }) : super(key: key);
 

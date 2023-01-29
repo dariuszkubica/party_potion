@@ -61,8 +61,8 @@ class Account extends StatelessWidget {
                 AppMainButtonStyle(
                   text: 'Friends list',
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => FriendsList()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => FriendsListPage()));
                   },
                 ),
                 if (Config.appFlavor == Flavor.production)
@@ -76,7 +76,7 @@ class Account extends StatelessWidget {
                       text: 'Alcohol list',
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const AlcoholsList()));
+                            builder: (_) => const AlcoholsListPage()));
                       },
                     ),
                     //------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ class Account extends StatelessWidget {
                       text: 'Change password',
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const ChangePassword()));
+                            builder: (_) => const ChangePasswordPage()));
                       },
                     ),
                     //------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ class Account extends StatelessWidget {
                       text: 'Avatar',
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const ChangeAvatar()));
+                            builder: (_) => const ChangeAvatarPage()));
                       },
                     ),
                   ])),
@@ -107,7 +107,7 @@ class Account extends StatelessWidget {
             text: 'About',
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => const About()));
+                  .push(MaterialPageRoute(builder: (_) => const AboutPage()));
             },
           ),
         ],

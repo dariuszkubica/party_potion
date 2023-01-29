@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
-class ChangeAvatar extends StatelessWidget {
-  const ChangeAvatar({
+class ChangeAvatarPage extends StatelessWidget {
+  const ChangeAvatarPage({
     Key? key,
   }) : super(key: key);
 
