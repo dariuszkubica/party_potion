@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                   if (Config.appFlavor == Flavor.production)
                     (const SizedBox())
                   else
-                    (Column(
+                    Column(
                       children: [
                         user != null
                             ? AppMainButtonStyle(
@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                                 text: 'ORDER',
                               ),
                       ],
-                    ))
+                    )
                 ],
               ),
             ],
