@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                         maxRadius: 25,
                         backgroundColor: const Color(0xFF202020),
                         backgroundImage: user != null
-                            ? const AssetImage('images/user.png')
+                            ? const AssetImage('images/guest.png')
                             : const AssetImage('images/guest.png'),
                       ),
                     ),
