@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               //------------------------------------------------------------------------------
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                         maxRadius: 25,
                         backgroundColor: const Color(0xFF202020),
                         backgroundImage: user != null
-                            ? const AssetImage('images/me.jpg')
+                            ? const AssetImage('images/user.png')
                             : const AssetImage('images/guest.png'),
                       ),
                     ),
