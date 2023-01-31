@@ -94,12 +94,31 @@ class _DisplayCocktailWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  AspectRatio(
-                    aspectRatio: 1.3,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(cocktailModel.imageURL),
-                      backgroundColor: Colors.white.withOpacity(0.3),
-                    ),
+                  Stack(
+                    alignment: const AlignmentDirectional(0.95, -1),
+                    children: [
+                      IconButton(
+                        isSelected: true,
+                        icon: const Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                        onPressed: () {},
+                        selectedIcon: const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                      AspectRatio(
+                        aspectRatio: 1.3,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(cocktailModel.imageURL),
+                          backgroundColor: Colors.white.withOpacity(0.3),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 15),
                   Text(
