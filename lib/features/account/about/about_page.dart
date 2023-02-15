@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
@@ -11,37 +11,37 @@ class AboutPage extends StatelessWidget {
     return BackgroundImageWidget(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
+        children: const [
+          Text(
             'App created by:',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 20),
-          const CircleAvatar(
+          SizedBox(height: 20),
+          CircleAvatar(
             maxRadius: 100,
             backgroundColor: Colors.white,
             backgroundImage: AssetImage('images/me.jpg'),
           ),
-          const SizedBox(height: 20),
-          const Text(
+          SizedBox(height: 20),
+          Text(
             'Dariusz Kubica',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 10),
-          const Text(
+          SizedBox(height: 10),
+          Text(
             'Flutter developer',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 20),
+          /* const SizedBox(height: 20),
           SizedBox(
             height: 40,
             width: 300,
@@ -57,7 +57,6 @@ class AboutPage extends StatelessWidget {
                     MaterialStateProperty.all<Color>(const Color(0xFF250000)),
               ),
               icon: const Icon(Icons.mail),
-              //onPressed: () {},
               onPressed: () async {
                 String email = Uri.encodeComponent("E-mail");
                 String subject = Uri.encodeComponent("");
@@ -72,7 +71,7 @@ class AboutPage extends StatelessWidget {
               },
               label: const Text('E-mail'),
             ),
-          ),
+          ), */
         ],
       ),
     );
