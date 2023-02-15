@@ -1,3 +1,5 @@
+import 'package:party_potion/key/cocktailapi.dart';
+
 enum Flavor {
   development,
   staging,
@@ -21,22 +23,22 @@ class Config {
   static String get cocktailIngredientRemoteDataSource {
     switch (appFlavor) {
       case Flavor.development:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
       case Flavor.staging:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+        return ingredientAPI;
       case Flavor.production:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+        return ingredientAPI;
     }
   }
 
   static String get cocktailSearchRemoteDataSource {
     switch (appFlavor) {
       case Flavor.development:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+        return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='; //This is free test API key
       case Flavor.staging:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+        return searchAPI;
       case Flavor.production:
-        return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+        return searchAPI;
     }
   }
 
