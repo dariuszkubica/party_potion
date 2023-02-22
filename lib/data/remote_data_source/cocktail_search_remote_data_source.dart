@@ -35,7 +35,8 @@ class CocktailSearchRemoteDataSource {
 
       return firstDrink;
     } on DioError catch (error) {
-      throw Exception(error.response?.data ?? 'Unknow error');
+      throw Exception(
+          error.response?.data['error']['message'] ?? 'Unkown error');
     }
   }
 }
