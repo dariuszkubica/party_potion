@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'cocktail_model.dart';
 
 // **************************************************************************
@@ -15,6 +13,8 @@ _$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
       json['strDrinkThumb'] as String,
       const IngredientsConverter()
           .fromJson(json['ingredientsList'] as Map<String?, String?>),
+      _$JsonConverterFromJson<Map<String?, String?>, List<DrinkModel>>(
+          json['drinksList'], const CocktailsConverter().fromJson),
     );
 
 Map<String, dynamic> _$$_CocktailModelToJson(_$_CocktailModel instance) =>
@@ -24,4 +24,19 @@ Map<String, dynamic> _$$_CocktailModelToJson(_$_CocktailModel instance) =>
       'strDrinkThumb': instance.imageURL,
       'ingredientsList':
           const IngredientsConverter().toJson(instance.ingredientsList),
+      'drinksList':
+          _$JsonConverterToJson<Map<String?, String?>, List<DrinkModel>>(
+              instance.drinksList, const CocktailsConverter().toJson),
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
