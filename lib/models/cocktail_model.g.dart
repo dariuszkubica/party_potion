@@ -9,10 +9,10 @@ part of 'cocktail_model.dart';
 _$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
     _$_CocktailModel(
       json['strDrink'] as String,
-      json['strInstructions'] as String,
+      json['strInstructions'] as String?,
       json['strDrinkThumb'] as String,
-      const IngredientsConverter()
-          .fromJson(json['ingredientsList'] as Map<String?, String?>),
+      _$JsonConverterFromJson<Map<String?, String?>, List<IngredientModel>>(
+          json['ingredientsList'], const IngredientsConverter().fromJson),
       _$JsonConverterFromJson<Map<String?, String?>, List<DrinkModel>>(
           json['drinksList'], const CocktailsConverter().fromJson),
     );
@@ -23,7 +23,8 @@ Map<String, dynamic> _$$_CocktailModelToJson(_$_CocktailModel instance) =>
       'strInstructions': instance.instructions,
       'strDrinkThumb': instance.imageURL,
       'ingredientsList':
-          const IngredientsConverter().toJson(instance.ingredientsList),
+          _$JsonConverterToJson<Map<String?, String?>, List<IngredientModel>>(
+              instance.ingredientsList, const IngredientsConverter().toJson),
       'drinksList':
           _$JsonConverterToJson<Map<String?, String?>, List<DrinkModel>>(
               instance.drinksList, const CocktailsConverter().toJson),

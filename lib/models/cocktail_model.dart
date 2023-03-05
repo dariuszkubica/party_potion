@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:party_potion/app/core/cocktails_converter.dart';
 import 'package:party_potion/app/core/ingredients_converter.dart';
 import 'package:party_potion/models/drink_model.dart';
@@ -13,11 +11,10 @@ part 'cocktail_model.freezed.dart';
 class CocktailModel with _$CocktailModel {
   factory CocktailModel(
     @JsonKey(name: 'strDrink') String name,
-    @JsonKey(name: 'strInstructions') String instructions,
+    @JsonKey(name: 'strInstructions') String? instructions,
     @JsonKey(name: 'strDrinkThumb') String imageURL,
-    @IngredientsConverter() List<IngredientModel> ingredientsList,
-    @CocktailsConverter() List<DrinkModel>? drinksList, //NOT WORKING
-    //final List<CocktailModel>? models,
+    @IngredientsConverter() List<IngredientModel>? ingredientsList,
+    @CocktailsConverter() List<DrinkModel>? drinksList,
   ) = _CocktailModel;
 
   factory CocktailModel.fromJson(Map<String, dynamic> json) =>
