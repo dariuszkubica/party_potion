@@ -6,9 +6,9 @@ class CocktailIngredientRemoteDataSource {
     required String alcoholName,
   }) async {
     try {
-      final reponse = await Dio().get<Map<String, dynamic>>(
+      final response = await Dio().get<Map<String, dynamic>>(
           '${Config.cocktailIngredientRemoteDataSource}$alcoholName');
-      return reponse.data;
+      return response.data;
     } on DioError catch (error) {
       throw Exception(error.response?.data ?? 'Unknow error');
     }

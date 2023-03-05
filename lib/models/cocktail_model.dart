@@ -1,46 +1,22 @@
+import 'package:party_potion/app/core/cocktails_converter.dart';
+import 'package:party_potion/app/core/ingredients_converter.dart';
+import 'package:party_potion/models/drink_model.dart';
 import 'package:party_potion/models/ingredient_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CocktailModel {
-  const CocktailModel({
-    required this.name,
-    this.instructions,
-    required this.imageURL,
-    this.ingredientsList,
-    this.drinksList,
-  });
+part 'cocktail_model.g.dart';
+part 'cocktail_model.freezed.dart';
 
-  final String name;
-  final String? instructions;
-  final String imageURL;
-  final List<IngredientModel>? ingredientsList;
-  final List<CocktailModel>? drinksList;
+@freezed
+class CocktailModel with _$CocktailModel {
+  factory CocktailModel(
+    @JsonKey(name: 'strDrink') String name,
+    @JsonKey(name: 'strInstructions') String? instructions,
+    @JsonKey(name: 'strDrinkThumb') String imageURL,
+    @IngredientsConverter() List<IngredientModel>? ingredientsList,
+    @CocktailsConverter() List<DrinkModel>? drinksList,
+  ) = _CocktailModel;
 
-  CocktailModel.fromJson(Map<String, dynamic> json)
-      : name = json['strDrink'],
-        instructions = json['strInstructions'],
-        imageURL = json['strDrinkThumb'],
-        ingredientsList = _getIngredients(json),
-        drinksList = [];
-
-  static List<IngredientModel> _getIngredients(
-    Map<String, dynamic> json,
-  ) {
-    List<IngredientModel> ingredientsList = [];
-
-    for (var i = 1; i <= 16; i++) {
-      if (json['strIngredient$i'] == null) {
-        continue;
-      }
-      if (json['strMeasure$i'] == null) {
-        continue;
-      }
-      ingredientsList.add(
-        IngredientModel(
-          ingredientName: json['strIngredient$i'],
-          ingredientMesure: json['strMeasure$i'],
-        ),
-      );
-    }
-    return ingredientsList;
-  }
+  factory CocktailModel.fromJson(Map<String, dynamic> json) =>
+      _$CocktailModelFromJson(json);
 }
