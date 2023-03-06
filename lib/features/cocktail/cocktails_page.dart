@@ -92,16 +92,22 @@ class _Filters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text(
-          'Filtry',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        )
-      ],
+    return BlocBuilder<CocktailCubit, CocktailState>(
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              state.alcohol.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
@@ -150,7 +156,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/vodka.png'),
           iconSize: 35,
-          tooltip: 'Vodka',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -161,7 +166,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/rum.png'),
           iconSize: 35,
-          tooltip: 'Rum',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -172,7 +176,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/tequila.png'),
           iconSize: 35,
-          tooltip: 'Tequila',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -183,7 +186,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/whisky.png'),
           iconSize: 35,
-          tooltip: 'Whisky',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -194,7 +196,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/gin.png'),
           iconSize: 35,
-          tooltip: 'Gin',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -205,7 +206,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/wine.png'),
           iconSize: 35,
-          tooltip: 'Wine',
           highlightColor: Colors.black,
         ),
         IconButton(
@@ -216,7 +216,6 @@ class _CocktailSelectByAlcohol extends StatelessWidget {
           },
           icon: Image.asset('images/alcohols_icon/brandy.png'),
           iconSize: 35,
-          tooltip: 'Brandy',
           highlightColor: Colors.black,
         ),
       ],

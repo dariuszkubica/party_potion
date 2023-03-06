@@ -11,7 +11,6 @@ class CocktailCubit extends Cubit<CocktailState> {
 
   final CocktailIngredientRepository _cocktailIngredientRepository;
 
-
   Future<void> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
@@ -21,6 +20,7 @@ class CocktailCubit extends Cubit<CocktailState> {
           .getCocktailModelsByAlcohol(alcoholName: alcoholName);
       emit(
         CocktailState(
+          alcohol: alcoholName,
           models: drinks,
           status: Status.success,
         ),
