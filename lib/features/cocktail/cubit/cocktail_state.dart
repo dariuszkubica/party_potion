@@ -4,11 +4,11 @@ class CocktailState {
   const CocktailState({
     this.status = Status.initial,
     this.errorMessage,
-    this.models = const [],
+    this.models = const DrinksDTO(drinks: []),
     this.alcohol = '',
   });
   final Status status;
   final String? errorMessage;
-  final List<CocktailModel> models;
+  final DrinksDTO? models;
   final String alcohol;
 }
