@@ -1,26 +1,17 @@
 import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_data_source.dart';
-import 'package:party_potion/models/cocktail_model.dart';
+import 'package:party_potion/models/drinks_dto.dart';
 
 class CocktailIngredientRepository {
   CocktailIngredientRepository(this._cocktailIngredientRemoteDataSource);
 
-  final CocktailIngredientRemoteDataSource _cocktailIngredientRemoteDataSource;
+  final CocktailIngredientRemoteRetroFitDataSource
+      _cocktailIngredientRemoteDataSource;
 
-  Future<List<CocktailModel>> getCocktailModelsByAlcohol({
+  Future<DrinksDTO> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
-    final json = await _cocktailIngredientRemoteDataSource.getCocktailData(
-      alcoholName: alcoholName,
+    return _cocktailIngredientRemoteDataSource.getCocktailData(
+      alcoholName,
     );
-    if (json == null) {
-      return [];
-    }
-    try {
-      final drinks = json['drinks'] as List;
-
-      return drinks.map((e) => CocktailModel.fromJson(e)).toList();
-    } catch (e) {
-      return [];
-    }
   }
 }

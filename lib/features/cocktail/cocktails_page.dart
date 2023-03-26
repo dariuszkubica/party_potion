@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
@@ -16,7 +17,7 @@ class CocktailsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => CocktailCubit(
         CocktailIngredientRepository(
-          CocktailIngredientRemoteDataSource(),
+          CocktailIngredientRemoteRetroFitDataSource(Dio()),
         ),
       )..getCocktailModelsByAlcohol(alcoholName: 'vodka'),
       child: BlocConsumer<CocktailCubit, CocktailState>(
@@ -126,9 +127,9 @@ class _DisplayCocktails extends StatelessWidget {
           crossAxisSpacing: 5,
           crossAxisCount: 2,
           children: [
-            for (final cocktailModel in state.models) ...[
+            for (final drinkDTO in state.models?.drinks ?? []) ...[
               CocktailWindowSmall(
-                cocktailModel: cocktailModel,
+                drinkDTO: drinkDTO,
               ),
             ],
           ],
