@@ -9,7 +9,7 @@ abstract class CocktailIngredientRemoteRetroFitDataSource {
   factory CocktailIngredientRemoteRetroFitDataSource(Dio dio,
       {String baseUrl}) = _CocktailIngredientRemoteRetroFitDataSource;
   @GET("/1/filter.php")
-  Future<DrinksDTO> getCocktailData(
+  Future<DrinksDTO> getCocktailDataByAlcohol(
     @Query("i") String alcoholName,
   );
 }

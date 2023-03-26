@@ -22,7 +22,7 @@ class _CocktailIngredientRemoteRetroFitDataSource
   String? baseUrl;
 
   @override
-  Future<DrinksDTO> getCocktailData(alcoholName) async {
+  Future<DrinksDTO> getCocktailDataByAlcohol(alcoholName) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'i': alcoholName};
     final _headers = <String, dynamic>{};
