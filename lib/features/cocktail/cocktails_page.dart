@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/common_widgets/cocktail_windows_small.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_data_source.dart';
+import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_retrofit_data_source.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
 import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 

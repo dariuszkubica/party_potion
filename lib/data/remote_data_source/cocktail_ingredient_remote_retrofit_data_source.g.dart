@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cocktail_ingredient_remote_data_source.dart';
+part of 'cocktail_ingredient_remote_retrofit_data_source.dart';
 
 // **************************************************************************
 // RetrofitGenerator
