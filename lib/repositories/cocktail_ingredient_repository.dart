@@ -11,7 +11,7 @@ class CocktailIngredientRepository {
   Future<DrinksDTO> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
-    return _cocktailIngredientRemoteRetroFitDataSource.getCocktailData(
+    return _cocktailIngredientRemoteRetroFitDataSource.getCocktailDataByAlcohol(
       alcoholName,
     );
   }
