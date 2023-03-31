@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/models/drinks_dto.dart';
 import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 
 part 'cocktail_state.dart';
 
+@injectable
 class CocktailCubit extends Cubit<CocktailState> {
   CocktailCubit(this._cocktailIngredientRepository)
       : super(const CocktailState());

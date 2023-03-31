@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
 part 'search_cocktail_state.dart';
 
+@injectable
 class SearchCocktailCubit extends Cubit<SearchCocktailState> {
   SearchCocktailCubit(this._cocktailSearchRepository)
       : super(const SearchCocktailState());

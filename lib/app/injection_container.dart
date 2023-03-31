@@ -1,25 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_retrofit_data_source.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_search_remote_retrofit_data_source.dart';
-import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
-import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
-import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
-import 'package:party_potion/repositories/cocktail_search_repository.dart';
+import 'package:injectable/injectable.dart';
+
+import 'injection_container.config.dart';
 
 final getIt = GetIt.instance;
 
-void configureDependencies() {
-  // Bloc
-  getIt.registerFactory(() => CocktailCubit(getIt()));
-  getIt.registerFactory(() => SearchCocktailCubit(getIt()));
+@InjectableInit()
+void configureDependencies() => getIt.init();
 
-  // Repositories
-  getIt.registerFactory(() => CocktailIngredientRepository(getIt()));
-  getIt.registerFactory(() => CocktailSearchRepository(getIt()));
+@module
+abstract class RegisterModule {
+  @Named("BaseUrl")
+  String get baseUrl => 'https://www.thecocktaildb.com/api/json/v1';
 
-  // DataSources
-  getIt
-      .registerFactory(() => CocktailIngredientRemoteRetroFitDataSource(Dio()));
-  getIt.registerFactory(() => CocktailSearchRemoteRetroFitDataSource(Dio()));
+  @lazySingleton
+  Dio dio(@Named('BaseUrl') String url) => Dio(BaseOptions(baseUrl: url));
 }

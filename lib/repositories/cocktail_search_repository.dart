@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:party_potion/data/remote_data_source/cocktail_search_remote_retrofit_data_source.dart';
 import 'package:party_potion/models/cocktail_dto.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 
+@injectable
 class CocktailSearchRepository {
   CocktailSearchRepository(this._cocktailSearchRemoteRetroFitDataSource);
 

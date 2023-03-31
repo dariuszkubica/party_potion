@@ -13,9 +13,7 @@ class _CocktailSearchRemoteRetroFitDataSource
   _CocktailSearchRemoteRetroFitDataSource(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'https://www.thecocktaildb.com/api/json/v1';
-  }
+  });
 
   final Dio _dio;
 
