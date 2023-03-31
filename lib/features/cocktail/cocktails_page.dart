@@ -1,12 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
+import 'package:party_potion/app/injection_container.dart';
 import 'package:party_potion/common_widgets/cocktail_windows_small.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_ingredient_remote_retrofit_data_source.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
-import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 
 class CocktailsPage extends StatelessWidget {
   const CocktailsPage({
@@ -14,12 +12,10 @@ class CocktailsPage extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CocktailCubit(
-        CocktailIngredientRepository(
-          CocktailIngredientRemoteRetroFitDataSource(Dio()),
-        ),
-      )..getCocktailModelsByAlcohol(alcoholName: 'vodka'),
+    return BlocProvider<CocktailCubit>(
+      create: (context) {
+        return getIt()..getCocktailModelsByAlcohol(alcoholName: 'vodka');
+      },
       child: BlocConsumer<CocktailCubit, CocktailState>(
         listener: (context, state) {
           if (state.status == Status.error) {

@@ -1,13 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
+import 'package:party_potion/app/injection_container.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 // import 'package:party_potion/common_widgets/ingredient_widget.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_search_remote_retrofit_data_source.dart';
 import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
-import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
 class SearchCoctailPage extends StatelessWidget {
   const SearchCoctailPage({
@@ -16,12 +14,10 @@ class SearchCoctailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchCocktailCubit(
-        CocktailSearchRepository(
-          CocktailSearchRemoteRetroFitDataSource(Dio()),
-        ),
-      ),
+    return BlocProvider<SearchCocktailCubit>(
+      create: (context) {
+        return getIt();
+      },
       child: BlocConsumer<SearchCocktailCubit, SearchCocktailState>(
         listener: (context, state) {
           if (state.status == Status.error) {
