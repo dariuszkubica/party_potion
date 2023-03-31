@@ -14,23 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CocktailModel _$CocktailModelFromJson(Map<String, dynamic> json) {
-  return _CocktailModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$CocktailModel {
-  @JsonKey(name: 'strDrink')
-  String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'strInstructions')
+  String get cocktailName => throw _privateConstructorUsedError;
   String? get instructions => throw _privateConstructorUsedError;
-  @JsonKey(name: 'strDrinkThumb')
-  String get imageURL => throw _privateConstructorUsedError;
-  @IngredientsConverter()
-  List<IngredientModel>? get ingredientsList =>
-      throw _privateConstructorUsedError;
+  String? get imageURL => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CocktailModelCopyWith<CocktailModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,11 +31,7 @@ abstract class $CocktailModelCopyWith<$Res> {
           CocktailModel value, $Res Function(CocktailModel) then) =
       _$CocktailModelCopyWithImpl<$Res, CocktailModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'strDrink') String name,
-      @JsonKey(name: 'strInstructions') String? instructions,
-      @JsonKey(name: 'strDrinkThumb') String imageURL,
-      @IngredientsConverter() List<IngredientModel>? ingredientsList});
+  $Res call({String cocktailName, String? instructions, String? imageURL});
 }
 
 /// @nodoc
@@ -62,28 +47,23 @@ class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? cocktailName = null,
     Object? instructions = freezed,
-    Object? imageURL = null,
-    Object? ingredientsList = freezed,
+    Object? imageURL = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      cocktailName: null == cocktailName
+          ? _value.cocktailName
+          : cocktailName // ignore: cast_nullable_to_non_nullable
               as String,
       instructions: freezed == instructions
           ? _value.instructions
           : instructions // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageURL: null == imageURL
+      imageURL: freezed == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String,
-      ingredientsList: freezed == ingredientsList
-          ? _value.ingredientsList
-          : ingredientsList // ignore: cast_nullable_to_non_nullable
-              as List<IngredientModel>?,
+              as String?,
     ) as $Val);
   }
 }
@@ -96,11 +76,7 @@ abstract class _$$_CocktailModelCopyWith<$Res>
       __$$_CocktailModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'strDrink') String name,
-      @JsonKey(name: 'strInstructions') String? instructions,
-      @JsonKey(name: 'strDrinkThumb') String imageURL,
-      @IngredientsConverter() List<IngredientModel>? ingredientsList});
+  $Res call({String cocktailName, String? instructions, String? imageURL});
 }
 
 /// @nodoc
@@ -114,68 +90,45 @@ class __$$_CocktailModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? cocktailName = null,
     Object? instructions = freezed,
-    Object? imageURL = null,
-    Object? ingredientsList = freezed,
+    Object? imageURL = freezed,
   }) {
     return _then(_$_CocktailModel(
-      null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      cocktailName: null == cocktailName
+          ? _value.cocktailName
+          : cocktailName // ignore: cast_nullable_to_non_nullable
               as String,
-      freezed == instructions
+      instructions: freezed == instructions
           ? _value.instructions
           : instructions // ignore: cast_nullable_to_non_nullable
               as String?,
-      null == imageURL
+      imageURL: freezed == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String,
-      freezed == ingredientsList
-          ? _value._ingredientsList
-          : ingredientsList // ignore: cast_nullable_to_non_nullable
-              as List<IngredientModel>?,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_CocktailModel implements _CocktailModel {
   _$_CocktailModel(
-      @JsonKey(name: 'strDrink') this.name,
-      @JsonKey(name: 'strInstructions') this.instructions,
-      @JsonKey(name: 'strDrinkThumb') this.imageURL,
-      @IngredientsConverter() final List<IngredientModel>? ingredientsList)
-      : _ingredientsList = ingredientsList;
-
-  factory _$_CocktailModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CocktailModelFromJson(json);
+      {required this.cocktailName,
+      required this.instructions,
+      required this.imageURL});
 
   @override
-  @JsonKey(name: 'strDrink')
-  final String name;
+  final String cocktailName;
   @override
-  @JsonKey(name: 'strInstructions')
   final String? instructions;
   @override
-  @JsonKey(name: 'strDrinkThumb')
-  final String imageURL;
-  final List<IngredientModel>? _ingredientsList;
-  @override
-  @IngredientsConverter()
-  List<IngredientModel>? get ingredientsList {
-    final value = _ingredientsList;
-    if (value == null) return null;
-    if (_ingredientsList is EqualUnmodifiableListView) return _ingredientsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? imageURL;
 
   @override
   String toString() {
-    return 'CocktailModel(name: $name, instructions: $instructions, imageURL: $imageURL, ingredientsList: $ingredientsList)';
+    return 'CocktailModel(cocktailName: $cocktailName, instructions: $instructions, imageURL: $imageURL)';
   }
 
   @override
@@ -183,60 +136,37 @@ class _$_CocktailModel implements _CocktailModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CocktailModel &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.cocktailName, cocktailName) ||
+                other.cocktailName == cocktailName) &&
             (identical(other.instructions, instructions) ||
                 other.instructions == instructions) &&
             (identical(other.imageURL, imageURL) ||
-                other.imageURL == imageURL) &&
-            const DeepCollectionEquality()
-                .equals(other._ingredientsList, _ingredientsList));
+                other.imageURL == imageURL));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, instructions, imageURL,
-      const DeepCollectionEquality().hash(_ingredientsList));
+  int get hashCode =>
+      Object.hash(runtimeType, cocktailName, instructions, imageURL);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_CocktailModelCopyWith<_$_CocktailModel> get copyWith =>
       __$$_CocktailModelCopyWithImpl<_$_CocktailModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CocktailModelToJson(
-      this,
-    );
-  }
 }
 
 abstract class _CocktailModel implements CocktailModel {
   factory _CocktailModel(
-      @JsonKey(name: 'strDrink')
-          final String name,
-      @JsonKey(name: 'strInstructions')
-          final String? instructions,
-      @JsonKey(name: 'strDrinkThumb')
-          final String imageURL,
-      @IngredientsConverter()
-          final List<IngredientModel>? ingredientsList) = _$_CocktailModel;
-
-  factory _CocktailModel.fromJson(Map<String, dynamic> json) =
-      _$_CocktailModel.fromJson;
+      {required final String cocktailName,
+      required final String? instructions,
+      required final String? imageURL}) = _$_CocktailModel;
 
   @override
-  @JsonKey(name: 'strDrink')
-  String get name;
+  String get cocktailName;
   @override
-  @JsonKey(name: 'strInstructions')
   String? get instructions;
   @override
-  @JsonKey(name: 'strDrinkThumb')
-  String get imageURL;
-  @override
-  @IngredientsConverter()
-  List<IngredientModel>? get ingredientsList;
+  String? get imageURL;
   @override
   @JsonKey(ignore: true)
   _$$_CocktailModelCopyWith<_$_CocktailModel> get copyWith =>

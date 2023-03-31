@@ -1,9 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-import 'package:party_potion/common_widgets/ingredient_widget.dart';
-import 'package:party_potion/data/remote_data_source/cocktail_search_remote_data_source.dart';
+// import 'package:party_potion/common_widgets/ingredient_widget.dart';
+import 'package:party_potion/data/remote_data_source/cocktail_search_remote_retrofit_data_source.dart';
 import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_search_repository.dart';
@@ -18,7 +19,7 @@ class SearchCoctailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchCocktailCubit(
         CocktailSearchRepository(
-          CocktailSearchRemoteDataSource(),
+          CocktailSearchRemoteRetroFitDataSource(Dio()),
         ),
       ),
       child: BlocConsumer<SearchCocktailCubit, SearchCocktailState>(
@@ -102,13 +103,14 @@ class _DisplayCocktailWidget extends StatelessWidget {
                     AspectRatio(
                       aspectRatio: 1.3,
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(cocktailModel.imageURL),
+                        backgroundImage:
+                            NetworkImage(cocktailModel.imageURL ?? ''),
                         backgroundColor: Colors.white.withOpacity(0.3),
                       ),
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      cocktailModel.name,
+                      cocktailModel.cocktailName,
                       style: const TextStyle(
                           color: Colors.red,
                           fontSize: 24,
@@ -124,10 +126,9 @@ class _DisplayCocktailWidget extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 5),
-                          IngredientWidget(
-                            ingredientsList:
-                                cocktailModel.ingredientsList ?? [],
-                          ),
+                          // const IngredientWidget(
+                          //   cocktailModel.ingredientsList ?? [],
+                          // ),
                           const SizedBox(height: 15),
                           const Text(
                             'Instruction:',
@@ -208,7 +209,8 @@ class _SearchWidget extends StatelessWidget {
               onPressed: () {
                 context
                     .read<SearchCocktailCubit>()
-                    .getCocktailModelByName(cocktailName: _controller.text);
+                    .getCocktailModelByName(cocktailName: _controller.text)
+                    .toString();
               },
               child: const Text('Get'),
             ),
