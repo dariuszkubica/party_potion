@@ -8,18 +8,16 @@ part 'search_cocktail_state.dart';
 
 @injectable
 class SearchCocktailCubit extends Cubit<SearchCocktailState> {
-  SearchCocktailCubit(this._cocktailSearchRepository)
-      : super(const SearchCocktailState());
+  SearchCocktailCubit(this.cocktailSearchRepository) : super(const SearchCocktailState());
 
-  final CocktailSearchRepository _cocktailSearchRepository;
+  final CocktailSearchRepository cocktailSearchRepository;
 
   Future<void> getCocktailModelByName({
     required String cocktailName,
   }) async {
     emit(const SearchCocktailState(status: Status.loading));
     try {
-      final cocktailModel = await _cocktailSearchRepository
-          .getCocktailModelByName(cocktailName: cocktailName);
+      final cocktailModel = await cocktailSearchRepository.getCocktailModelByName(cocktailName: cocktailName);
       emit(
         SearchCocktailState(
           model: cocktailModel,

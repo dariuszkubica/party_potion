@@ -57,8 +57,8 @@ extension GetItInjectableX on _i1.GetIt {
             gh<_i6.CocktailSearchRemoteRetroFitDataSource>()));
     gh.factory<_i8.SearchCocktailCubit>(
         () => _i8.SearchCocktailCubit(gh<_i7.CocktailSearchRepository>()));
-    gh.factory<_i9.CocktailCubit>(
-        () => _i9.CocktailCubit(gh<_i5.CocktailIngredientRepository>()));
+    gh.factory<_i9.CocktailCubit>(() => _i9.CocktailCubit(
+        cocktailIngredientRepository: gh<_i5.CocktailIngredientRepository>()));
     return this;
   }
 }

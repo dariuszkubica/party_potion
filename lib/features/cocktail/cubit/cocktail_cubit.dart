@@ -8,23 +8,23 @@ part 'cocktail_state.dart';
 
 @injectable
 class CocktailCubit extends Cubit<CocktailState> {
-  CocktailCubit(this._cocktailIngredientRepository)
-      : super(const CocktailState());
+  CocktailCubit({required this.cocktailIngredientRepository}) : super(const CocktailState());
 
-  final CocktailIngredientRepository _cocktailIngredientRepository;
+  final CocktailIngredientRepository cocktailIngredientRepository;
 
   Future<void> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
-    emit(const CocktailState(status: Status.loading));
+    emit(
+      const CocktailState(status: Status.loading),
+    );
     try {
-      final drinks = await _cocktailIngredientRepository
-          .getCocktailModelsByAlcohol(alcoholName: alcoholName);
+      final drinks = await cocktailIngredientRepository.getCocktailModelsByAlcohol(alcoholName: alcoholName);
       emit(
         CocktailState(
+          status: Status.success,
           alcohol: alcoholName,
           models: drinks,
-          status: Status.success,
         ),
       );
     } catch (error) {
