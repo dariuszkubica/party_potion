@@ -5,15 +5,15 @@ import 'package:party_potion/models/drinks_dto.dart';
 @injectable
 class CocktailIngredientRepository {
   CocktailIngredientRepository(
-      this._cocktailIngredientRemoteRetroFitDataSource);
+      {required this.cocktailIngredientRemoteRetroFitDataSource});
 
   final CocktailIngredientRemoteRetroFitDataSource
-      _cocktailIngredientRemoteRetroFitDataSource;
+      cocktailIngredientRemoteRetroFitDataSource;
 
   Future<DrinksDTO> getCocktailModelsByAlcohol({
     required String alcoholName,
   }) async {
-    return _cocktailIngredientRemoteRetroFitDataSource.getCocktailDataByAlcohol(
+    return cocktailIngredientRemoteRetroFitDataSource.getCocktailDataByAlcohol(
       alcoholName,
     );
   }

@@ -5,10 +5,11 @@ import 'package:party_potion/models/cocktail_model.dart';
 
 @injectable
 class CocktailSearchRepository {
-  CocktailSearchRepository(this._cocktailSearchRemoteRetroFitDataSource);
+  CocktailSearchRepository(
+      {required this.cocktailSearchRemoteRetroFitDataSource});
 
   final CocktailSearchRemoteRetroFitDataSource
-      _cocktailSearchRemoteRetroFitDataSource;
+      cocktailSearchRemoteRetroFitDataSource;
 
   List<CocktailModel> convertToCocktailModel(CocktailsDto cocktailsDto) {
     return cocktailsDto.drinks.map((drink) {
@@ -24,7 +25,7 @@ class CocktailSearchRepository {
     required String cocktailName,
   }) async {
     final coctailsDto =
-        await _cocktailSearchRemoteRetroFitDataSource.getCocktailDataByName(
+        await cocktailSearchRemoteRetroFitDataSource.getCocktailDataByName(
       cocktailName,
     );
     // Implement if() for check any elements in drinks (drinks > 0)
