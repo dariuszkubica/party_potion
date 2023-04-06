@@ -1,21 +1,23 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
 part 'search_cocktail_state.dart';
+part 'search_cocktail_cubit.freezed.dart';
 
 @injectable
 class SearchCocktailCubit extends Cubit<SearchCocktailState> {
-  SearchCocktailCubit({required this.cocktailSearchRepository}) : super(const SearchCocktailState());
+  SearchCocktailCubit({required this.cocktailSearchRepository}) : super(SearchCocktailState());
 
   final CocktailSearchRepository cocktailSearchRepository;
 
   Future<void> getCocktailModelByName({
     required String cocktailName,
   }) async {
-    emit(const SearchCocktailState(
+    emit(SearchCocktailState(
       status: Status.loading,
     ));
     try {
