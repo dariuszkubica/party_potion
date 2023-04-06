@@ -37,8 +37,7 @@ class Account extends StatelessWidget {
                       side: const BorderSide(color: Colors.red),
                     ),
                   ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xFF250000)),
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF250000)),
                 ),
                 icon: const Icon(
                   Icons.logout,
@@ -61,8 +60,7 @@ class Account extends StatelessWidget {
                 AppMainButtonStyle(
                   text: 'Friends list',
                   onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => FriendsListPage()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => FriendsListPage()));
                   },
                 ),
                 if (Config.appFlavor == Flavor.production)
@@ -75,8 +73,7 @@ class Account extends StatelessWidget {
                     AppMainButtonStyle(
                       text: 'Alcohol list',
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const AlcoholsListPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AlcoholsListPage()));
                       },
                     ),
                     //------------------------------------------------------------------------------
@@ -85,8 +82,7 @@ class Account extends StatelessWidget {
                     AppMainButtonStyle(
                       text: 'Change password',
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const ChangePasswordPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ChangePasswordPage()));
                       },
                     ),
                     //------------------------------------------------------------------------------
@@ -95,8 +91,7 @@ class Account extends StatelessWidget {
                     AppMainButtonStyle(
                       text: 'Avatar',
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const ChangeAvatarPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChangeAvatarPage()));
                       },
                     ),
                   ])),
@@ -106,8 +101,7 @@ class Account extends StatelessWidget {
           AppMainButtonStyle(
             text: 'About',
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => const AboutPage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AboutPage()));
             },
           ),
         ],
