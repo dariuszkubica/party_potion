@@ -9,37 +9,35 @@ class CocktailsDto with _$CocktailsDto {
     required List<CocktailDto> drinks,
   }) = _CocktailsDto;
 
-  factory CocktailsDto.fromJson(Map<String, dynamic> json) =>
-      _$CocktailsDtoFromJson(json);
+  factory CocktailsDto.fromJson(Map<String, dynamic> json) => _$CocktailsDtoFromJson(json);
 }
 
 @freezed
 class CocktailDto with _$CocktailDto {
   const factory CocktailDto({
-    required String? idDrink,
+    String? idDrink,
     required String? strDrink,
-    required String? strTags,
-    required String? strCategory,
-    required String? strIba,
-    required String? strAlcoholic,
-    required String? strGlass,
+    String? strTags,
+    String? strCategory,
+    String? strIba,
+    String? strAlcoholic,
+    String? strGlass,
     required String? strInstructions,
-    required String? strInstructionsDe,
-    required String? strInstructionsIt,
+    String? strInstructionsDe,
+    String? strInstructionsIt,
     required String? strDrinkThumb,
-    required String? strIngredient1,
-    required String? strIngredient2,
-    required String? strIngredient3,
-    required String? strIngredient4,
-    required String? strMeasure1,
-    required String? strMeasure2,
-    required String? strMeasure3,
-    required String? strImageSource,
-    required String? strImageAttribution,
-    required String? strCreativeCommonsConfirmed,
-    required DateTime? dateModified,
+    String? strIngredient1,
+    String? strIngredient2,
+    String? strIngredient3,
+    String? strIngredient4,
+    String? strMeasure1,
+    String? strMeasure2,
+    String? strMeasure3,
+    String? strImageSource,
+    String? strImageAttribution,
+    String? strCreativeCommonsConfirmed,
+    DateTime? dateModified,
   }) = _CocktailDto;
 
-  factory CocktailDto.fromJson(Map<String, dynamic> json) =>
-      _$CocktailDtoFromJson(json);
+  factory CocktailDto.fromJson(Map<String, dynamic> json) => _$CocktailDtoFromJson(json);
 }
