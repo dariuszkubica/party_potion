@@ -1,11 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'dart:io' as io;
 
 class ChangeAvatarPage extends StatelessWidget {
-  const ChangeAvatarPage({
+  ChangeAvatarPage({
     Key? key,
   }) : super(key: key);
-
+  final userID = FirebaseAuth.instance.currentUser?.uid;
   @override
   Widget build(BuildContext context) {
     return BackgroundImageWidget(
@@ -38,7 +43,44 @@ class ChangeAvatarPage extends StatelessWidget {
               ),
               child: IconButton(
                 iconSize: 24,
-                onPressed: () {},
+                onPressed: () async {
+                  final ImagePicker picker = ImagePicker();
+                  try {
+                    final XFile? file = await picker.pickImage(
+                      source: ImageSource.gallery,
+                      maxWidth: 200,
+                      maxHeight: 200,
+                    );
+                    if (file == null) {
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('No file was selected'),
+                        ),
+                      );
+                      return;
+                    }
+                    final metadata = SettableMetadata(
+                      contentType: 'image/jpeg',
+                      customMetadata: {'picked-file-path': file.path},
+                    );
+                    var ref =
+                        FirebaseStorage.instance.ref().child('user/').child(userID!).child('avatars/${file.name}');
+                    UploadTask uploadTask;
+                    if (kIsWeb) {
+                      uploadTask = ref.putData(await file.readAsBytes(), metadata);
+                    } else {
+                      uploadTask = ref.putFile(io.File(file.path), metadata);
+                    }
+                    await Future.value(uploadTask);
+                  } catch (error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(error.toString()),
+                      ),
+                    );
+                  }
+                },
                 icon: const Icon(
                   Icons.add_a_photo,
                   color: Colors.white,
