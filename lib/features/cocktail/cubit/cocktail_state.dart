@@ -1,14 +1,11 @@
 part of 'cocktail_cubit.dart';
 
-class CocktailState {
-  const CocktailState({
-    this.status = Status.initial,
-    this.errorMessage,
-    this.models = const DrinksDTO(drinks: []),
-    this.alcohol = '',
-  });
-  final Status status;
-  final String? errorMessage;
-  final DrinksDTO? models;
-  final String alcohol;
+@freezed
+class CocktailState with _$CocktailState {
+  factory CocktailState({
+    @Default(Status.initial) Status status,
+    String? errorMessage,
+    @Default('') String alcohol,
+    DrinksDTO? models,
+  }) = _CocktailState;
 }
