@@ -20,15 +20,14 @@ class AppMainButtonStyle extends StatelessWidget {
             side: const BorderSide(color: Colors.red),
           ),
         ),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF250000)),
+        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF250000)),
       ),
       onPressed: () {
         onPressed();
       },
       child: SizedBox(
-        width: 200,
-        height: 25,
+        width: 180,
+        height: 40,
         child: Center(
           child: Text(
             text,

@@ -22,8 +22,8 @@ class AppInactiveButtonStyle extends StatelessWidget {
       ),
       onPressed: () {},
       child: SizedBox(
-        width: 200,
-        height: 25,
+        width: 180,
+        height: 40,
         child: Center(
           child: Text(
             text,
