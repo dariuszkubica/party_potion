@@ -4,9 +4,8 @@ import 'package:party_potion/app/core/config.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
 import 'package:party_potion/features/account/alcohol/alcohol_list_page.dart';
-import 'package:party_potion/features/account/avatar/avatar_change_page.dart';
+import 'package:party_potion/features/account/profile/profile_page.dart';
 import 'package:party_potion/features/account/friends/friends_list_page.dart';
-import 'package:party_potion/features/account/password/password_change_page.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 
@@ -80,18 +79,9 @@ class Account extends StatelessWidget {
                     const SizedBox(height: 10), //SPACER
                     //------------------------------------------------------------------------------
                     AppMainButtonStyle(
-                      text: 'Change password',
+                      text: 'Profile',
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ChangePasswordPage()));
-                      },
-                    ),
-                    //------------------------------------------------------------------------------
-                    const SizedBox(height: 10), //SPACER
-                    //------------------------------------------------------------------------------
-                    AppMainButtonStyle(
-                      text: 'Avatar',
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChangeAvatarPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfilePage()));
                       },
                     ),
                   ])),
