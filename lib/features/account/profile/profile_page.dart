@@ -1,21 +1,22 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/features/account/password/password_change_page.dart';
 import 'dart:io' as io;
 
-import 'package:party_potion/features/account/password/password_change_page.dart';
-
 class ProfilePage extends StatelessWidget {
-  ProfilePage({
+  const ProfilePage({
     Key? key,
   }) : super(key: key);
-  final userID = FirebaseAuth.instance.currentUser?.uid;
   @override
   Widget build(BuildContext context) {
+    final currentUser = context.read<AuthCubit>().state.user!.uid;
+    print(currentUser);
     return BackgroundImageWidget(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,11 +58,13 @@ class ProfilePage extends StatelessWidget {
                     iconSize: 24,
                     onPressed: () async {
                       final ImagePicker picker = ImagePicker();
+                      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
                       try {
                         final XFile? file = await picker.pickImage(
                           source: ImageSource.gallery,
                           maxWidth: 200,
                           maxHeight: 200,
+                          imageQuality: 100,
                         );
                         if (file == null) {
                           // ignore: use_build_context_synchronously
@@ -76,16 +79,17 @@ class ProfilePage extends StatelessWidget {
                           contentType: 'image/jpeg',
                           customMetadata: {'picked-file-path': file.path},
                         );
-                        var ref =
-                            FirebaseStorage.instance.ref().child('user/').child(userID!).child('avatars/${file.name}');
+                        final ref =
+                            FirebaseStorage.instance.ref().child('users/').child(currentUser).child('/avatar.jpg');
                         UploadTask uploadTask;
                         if (kIsWeb) {
                           uploadTask = ref.putData(await file.readAsBytes(), metadata);
                         } else {
                           uploadTask = ref.putFile(io.File(file.path), metadata);
                         }
-                        await Future.value(uploadTask);
+                        Future.value(uploadTask);
                       } catch (error) {
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(error.toString()),

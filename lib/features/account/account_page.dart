@@ -81,7 +81,7 @@ class Account extends StatelessWidget {
                     AppMainButtonStyle(
                       text: 'Profile',
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfilePage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfilePage()));
                       },
                     ),
                   ])),
