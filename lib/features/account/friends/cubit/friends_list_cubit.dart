@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:party_potion/models/friend_model.dart';
 import 'package:party_potion/repositories/friends_repository.dart';
 
 part 'friends_list_state.dart';
+part 'friends_list_cubit.freezed.dart';
 
 class FriendsListCubit extends Cubit<FriendsListState> {
   FriendsListCubit(this._friendsRepository) : super(const FriendsListState());

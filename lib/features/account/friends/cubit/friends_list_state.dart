@@ -1,18 +1,13 @@
 part of 'friends_list_cubit.dart';
 
+@freezed
 @immutable
-class FriendsListState {
-  const FriendsListState({
-    this.saved = false,
-    this.errorMessage = '',
-    this.items = const [],
-    this.loadingErrorOccured = false,
-    this.removingErrorOccured = false,
-  });
-
-  final bool saved;
-  final String errorMessage;
-  final List<FriendModel> items;
-  final bool loadingErrorOccured;
-  final bool removingErrorOccured;
+class FriendsListState with _$FriendsListState {
+  const factory FriendsListState({
+    @Default(false) bool saved,
+    @Default('') String errorMessage,
+    @Default([]) List<FriendModel> items,
+    @Default(false) bool loadingErrorOccured,
+    @Default(false) bool removingErrorOccured,
+  }) = _FriendsListState;
 }
