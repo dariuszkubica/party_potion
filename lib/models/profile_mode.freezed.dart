@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_mode.dart';
+part of 'profile_mode.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,28 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
+  return _ProfileModel.fromJson(json);
+}
+
 /// @nodoc
-mixin _$UserModel {
+mixin _$ProfileModel {
   String? get userName => throw _privateConstructorUsedError;
   String? get userAvatar => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserModelCopyWith<UserModel> get copyWith =>
+  $ProfileModelCopyWith<ProfileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res, UserModel>;
+abstract class $ProfileModelCopyWith<$Res> {
+  factory $ProfileModelCopyWith(
+          ProfileModel value, $Res Function(ProfileModel) then) =
+      _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
   $Res call({String? userName, String? userAvatar});
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
-    implements $UserModelCopyWith<$Res> {
-  _$UserModelCopyWithImpl(this._value, this._then);
+class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
+    implements $ProfileModelCopyWith<$Res> {
+  _$ProfileModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,21 +68,22 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
 }
 
 /// @nodoc
-abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$$_UserModelCopyWith(
-          _$_UserModel value, $Res Function(_$_UserModel) then) =
-      __$$_UserModelCopyWithImpl<$Res>;
+abstract class _$$_ProfileModelCopyWith<$Res>
+    implements $ProfileModelCopyWith<$Res> {
+  factory _$$_ProfileModelCopyWith(
+          _$_ProfileModel value, $Res Function(_$_ProfileModel) then) =
+      __$$_ProfileModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? userName, String? userAvatar});
 }
 
 /// @nodoc
-class __$$_UserModelCopyWithImpl<$Res>
-    extends _$UserModelCopyWithImpl<$Res, _$_UserModel>
-    implements _$$_UserModelCopyWith<$Res> {
-  __$$_UserModelCopyWithImpl(
-      _$_UserModel _value, $Res Function(_$_UserModel) _then)
+class __$$_ProfileModelCopyWithImpl<$Res>
+    extends _$ProfileModelCopyWithImpl<$Res, _$_ProfileModel>
+    implements _$$_ProfileModelCopyWith<$Res> {
+  __$$_ProfileModelCopyWithImpl(
+      _$_ProfileModel _value, $Res Function(_$_ProfileModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +92,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? userAvatar = freezed,
   }) {
-    return _then(_$_UserModel(
+    return _then(_$_ProfileModel(
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -99,44 +106,62 @@ class __$$_UserModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_ProfileModel implements _ProfileModel {
+  const _$_ProfileModel(
+      {this.userName,
+      this.userAvatar =
+          'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg'});
 
-class _$_UserModel implements _UserModel {
-  const _$_UserModel({this.userName, this.userAvatar});
+  factory _$_ProfileModel.fromJson(Map<String, dynamic> json) =>
+      _$$_ProfileModelFromJson(json);
 
   @override
   final String? userName;
   @override
+  @JsonKey()
   final String? userAvatar;
 
   @override
   String toString() {
-    return 'UserModel(userName: $userName, userAvatar: $userAvatar)';
+    return 'ProfileModel(userName: $userName, userAvatar: $userAvatar)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserModel &&
+            other is _$_ProfileModel &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userAvatar, userAvatar) ||
                 other.userAvatar == userAvatar));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, userName, userAvatar);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
-      __$$_UserModelCopyWithImpl<_$_UserModel>(this, _$identity);
+  _$$_ProfileModelCopyWith<_$_ProfileModel> get copyWith =>
+      __$$_ProfileModelCopyWithImpl<_$_ProfileModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProfileModelToJson(
+      this,
+    );
+  }
 }
 
-abstract class _UserModel implements UserModel {
-  const factory _UserModel({final String? userName, final String? userAvatar}) =
-      _$_UserModel;
+abstract class _ProfileModel implements ProfileModel {
+  const factory _ProfileModel(
+      {final String? userName, final String? userAvatar}) = _$_ProfileModel;
+
+  factory _ProfileModel.fromJson(Map<String, dynamic> json) =
+      _$_ProfileModel.fromJson;
 
   @override
   String? get userName;
@@ -144,6 +169,6 @@ abstract class _UserModel implements UserModel {
   String? get userAvatar;
   @override
   @JsonKey(ignore: true)
-  _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
+  _$$_ProfileModelCopyWith<_$_ProfileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
