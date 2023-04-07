@@ -8,7 +8,7 @@ part of 'profile_mode.dart';
 
 _$_ProfileModel _$$_ProfileModelFromJson(Map<String, dynamic> json) =>
     _$_ProfileModel(
-      userName: json['userName'] as String?,
+      userName: json['userName'] as String,
       userAvatar: json['userAvatar'] as String? ??
           'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
     );

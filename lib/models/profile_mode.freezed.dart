@@ -20,8 +20,8 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileModel {
-  String? get userName => throw _privateConstructorUsedError;
-  String? get userAvatar => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  String get userAvatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $ProfileModelCopyWith<$Res> {
           ProfileModel value, $Res Function(ProfileModel) then) =
       _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
-  $Res call({String? userName, String? userAvatar});
+  $Res call({String userName, String userAvatar});
 }
 
 /// @nodoc
@@ -51,18 +51,18 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
-    Object? userAvatar = freezed,
+    Object? userName = null,
+    Object? userAvatar = null,
   }) {
     return _then(_value.copyWith(
-      userName: freezed == userName
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userAvatar: freezed == userAvatar
+              as String,
+      userAvatar: null == userAvatar
           ? _value.userAvatar
           : userAvatar // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$_ProfileModelCopyWith<$Res>
       __$$_ProfileModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? userName, String? userAvatar});
+  $Res call({String userName, String userAvatar});
 }
 
 /// @nodoc
@@ -89,18 +89,18 @@ class __$$_ProfileModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
-    Object? userAvatar = freezed,
+    Object? userName = null,
+    Object? userAvatar = null,
   }) {
     return _then(_$_ProfileModel(
-      userName: freezed == userName
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userAvatar: freezed == userAvatar
+              as String,
+      userAvatar: null == userAvatar
           ? _value.userAvatar
           : userAvatar // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -109,7 +109,7 @@ class __$$_ProfileModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProfileModel implements _ProfileModel {
   const _$_ProfileModel(
-      {this.userName,
+      {required this.userName,
       this.userAvatar =
           'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg'});
 
@@ -117,10 +117,10 @@ class _$_ProfileModel implements _ProfileModel {
       _$$_ProfileModelFromJson(json);
 
   @override
-  final String? userName;
+  final String userName;
   @override
   @JsonKey()
-  final String? userAvatar;
+  final String userAvatar;
 
   @override
   String toString() {
@@ -158,15 +158,16 @@ class _$_ProfileModel implements _ProfileModel {
 
 abstract class _ProfileModel implements ProfileModel {
   const factory _ProfileModel(
-      {final String? userName, final String? userAvatar}) = _$_ProfileModel;
+      {required final String userName,
+      final String userAvatar}) = _$_ProfileModel;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$_ProfileModel.fromJson;
 
   @override
-  String? get userName;
+  String get userName;
   @override
-  String? get userAvatar;
+  String get userAvatar;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileModelCopyWith<_$_ProfileModel> get copyWith =>
