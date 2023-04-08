@@ -25,9 +25,9 @@ class Config {
       case Flavor.development:
         return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
       case Flavor.staging:
-        return ingredientAPI;
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
       case Flavor.production:
-        return ingredientAPI;
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
     }
   }
 
@@ -36,9 +36,9 @@ class Config {
       case Flavor.development:
         return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='; //This is free test API key
       case Flavor.staging:
-        return searchAPI;
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
       case Flavor.production:
-        return searchAPI;
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='; //This is free test API key
     }
   }
 
