@@ -21,14 +21,18 @@ class CocktailCubit extends Cubit<CocktailState> {
       CocktailState(status: Status.loading),
     );
     try {
-      final drinks = await cocktailIngredientRepository.getCocktailModelsByAlcohol(alcoholName: alcoholName);
-      emit(
-        CocktailState(
-          status: Status.success,
-          alcohol: alcoholName,
-          models: drinks,
-        ),
-      );
+      try {
+        final drinks = await cocktailIngredientRepository.getCocktailModelsByAlcohol(alcoholName: alcoholName);
+        emit(
+          CocktailState(
+            status: Status.success,
+            alcohol: alcoholName,
+            models: drinks,
+          ),
+        );
+      } catch (error) {
+        throw Exception('Unknown error on the API side');
+      }
     } catch (error) {
       emit(
         CocktailState(
