@@ -1,59 +1,69 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
+import 'package:party_potion/repositories/auth_repository.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit()
+  AuthCubit(this.authRepository)
       : super(
-          const AuthState(
+          AuthState(
             user: null,
             isLoading: false,
             errorMessage: '',
           ),
         );
 
+  final AuthRepository authRepository;
+
   StreamSubscription? _streamSubscription;
 
-  Future<void> register(
-      {required String email, required String password}) async {
+  Future<void> signUp({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await authRepository.signUp(
         email: email,
         password: password,
       );
     } catch (error) {
-      emit(AuthState(errorMessage: error.toString()));
+      emit(AuthState(
+        errorMessage: error.toString(),
+      ));
     }
   }
 
-  Future<void> signIn({required String email, required String password}) async {
+  Future<void> signIn({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await authRepository.signIn(
         email: email,
         password: password,
       );
     } catch (error) {
-      emit(AuthState(errorMessage: error.toString()));
+      emit(AuthState(
+        errorMessage: error.toString(),
+      ));
     }
   }
 
   Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
+    authRepository.signOut();
   }
 
   Future<void> start() async {
     emit(
-      const AuthState(
+      AuthState(
         user: null,
         isLoading: true,
         errorMessage: '',
       ),
     );
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
+    _streamSubscription = authRepository.authStateChanges().listen((user) {
       emit(
         AuthState(
           user: user,
@@ -62,15 +72,15 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
     })
-          ..onError((error) {
-            emit(
-              AuthState(
-                user: null,
-                isLoading: false,
-                errorMessage: error.toString(),
-              ),
-            );
-          });
+      ..onError((error) {
+        emit(
+          AuthState(
+            user: null,
+            isLoading: false,
+            errorMessage: error.toString(),
+          ),
+        );
+      });
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/account_page.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/repositories/auth_repository.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -13,22 +14,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var errorMessage = '';
-  bool isCreatingAccount = false;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit()..start(),
+      create: (context) => AuthCubit(AuthRepository())..start(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(state.errorMessage),
-              backgroundColor: Colors.red,
-            ));
+            final errorMessage = state.errorMessage;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
           }
         },
         builder: (context, state) {
@@ -42,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Text(
-                        isCreatingAccount == true ? 'Register' : 'Login',
+                        state.isCreatingAccount ? 'Register' : 'Login',
                         style: const TextStyle(
                           color: Colors.red,
                           fontSize: 32,
@@ -77,21 +79,17 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: true,
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        errorMessage,
-                        style: const TextStyle(color: Colors.white),
-                      ),
                       ElevatedButton(
                         onPressed: () async {
-                          if (isCreatingAccount == true) {
+                          if (state.isCreatingAccount) {
                             try {
-                              await context.read<AuthCubit>().register(
+                              await context.read<AuthCubit>().signUp(
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
                             } catch (error) {
                               setState(() {
-                                errorMessage = error.toString();
+                                state.errorMessage.toString();
                               });
                             }
                           } else {
@@ -102,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                                   );
                             } catch (error) {
                               setState(() {
-                                errorMessage = error.toString();
+                                state.errorMessage.toString();
                               });
                             }
                           }
@@ -119,25 +117,25 @@ class _LoginPageState extends State<LoginPage> {
                               const Color(0xFF250000)),
                         ),
                         child: Text(
-                          isCreatingAccount == true ? 'Register' : 'Login',
+                          state.isCreatingAccount ? 'Register' : 'Login',
                           style: const TextStyle(color: Colors.white),
                         ),
                       ),
-                      if (isCreatingAccount == false) ...[
+                      if (state.isCreatingAccount == false) ...[
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              isCreatingAccount = true;
+                              state.isCreatingAccount = true;
                             });
                           },
                           child: const Text('Create account'),
                         ),
                       ],
-                      if (isCreatingAccount == true) ...[
+                      if (state.isCreatingAccount) ...[
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              isCreatingAccount = false;
+                              state.isCreatingAccount = false;
                             });
                           },
                           child: const Text('You have account?'),

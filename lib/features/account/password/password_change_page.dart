@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/repositories/auth_repository.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({
@@ -25,7 +26,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => AuthCubit(AuthRepository()),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
