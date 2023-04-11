@@ -20,7 +20,9 @@ class AppInactiveButtonStyle extends StatelessWidget {
         ),
         backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
       ),
-      onPressed: () {},
+      onPressed: () {
+        throw Exception('Feature currently unavailable');
+      },
       child: SizedBox(
         width: 180,
         height: 40,
