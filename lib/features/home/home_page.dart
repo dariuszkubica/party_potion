@@ -4,8 +4,6 @@ import 'package:party_potion/app/core/config.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
 import 'package:party_potion/features/account/login_page.dart';
 import 'package:party_potion/features/cocktail/cocktails_page.dart';
-import 'package:party_potion/features/favorites/favorites_page.dart';
-import 'package:party_potion/features/order/order_page.dart';
 import 'package:party_potion/common_widgets/app_inactive_button_style.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
@@ -90,12 +88,12 @@ class HomePage extends StatelessWidget {
                     Column(
                       children: [
                         user != null
-                            ? AppMainButtonStyle(
+                            ? const AppInactiveButtonStyle(
                                 text: 'FAVORITES',
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (_) => const FavoritesPage()));
-                                },
+                                // onPressed: () {
+                                //   Navigator.of(context).push(MaterialPageRoute(
+                                //       builder: (_) => const FavoritesPage()));
+                                // },
                               )
                             : const AppInactiveButtonStyle(
                                 text: 'FAVORITES',
@@ -105,12 +103,12 @@ class HomePage extends StatelessWidget {
                         const SizedBox(height: 20), //SPACER
                         //------------------------------------------------------------------------------
                         user != null
-                            ? AppMainButtonStyle(
+                            ? const AppInactiveButtonStyle(
                                 text: 'ORDER',
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (_) => const OrderPage()));
-                                },
+                                // onPressed: () {
+                                //   Navigator.of(context).push(MaterialPageRoute(
+                                //       builder: (_) => const OrderPage()));
+                                // },
                               )
                             : const AppInactiveButtonStyle(
                                 text: 'ORDER',
