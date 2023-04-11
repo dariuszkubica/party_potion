@@ -20,6 +20,7 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileModel {
+  String get userID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   String get userAvatar => throw _privateConstructorUsedError;
 
@@ -35,7 +36,7 @@ abstract class $ProfileModelCopyWith<$Res> {
           ProfileModel value, $Res Function(ProfileModel) then) =
       _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
-  $Res call({String userName, String userAvatar});
+  $Res call({String userID, String userName, String userAvatar});
 }
 
 /// @nodoc
@@ -51,10 +52,15 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userID = null,
     Object? userName = null,
     Object? userAvatar = null,
   }) {
     return _then(_value.copyWith(
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,7 @@ abstract class _$$_ProfileModelCopyWith<$Res>
       __$$_ProfileModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userName, String userAvatar});
+  $Res call({String userID, String userName, String userAvatar});
 }
 
 /// @nodoc
@@ -89,10 +95,15 @@ class __$$_ProfileModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userID = null,
     Object? userName = null,
     Object? userAvatar = null,
   }) {
     return _then(_$_ProfileModel(
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -108,8 +119,9 @@ class __$$_ProfileModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ProfileModel implements _ProfileModel {
-  const _$_ProfileModel(
-      {required this.userName,
+  _$_ProfileModel(
+      {required this.userID,
+      this.userName = 'User',
       this.userAvatar =
           'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg'});
 
@@ -117,6 +129,9 @@ class _$_ProfileModel implements _ProfileModel {
       _$$_ProfileModelFromJson(json);
 
   @override
+  final String userID;
+  @override
+  @JsonKey()
   final String userName;
   @override
   @JsonKey()
@@ -124,7 +139,7 @@ class _$_ProfileModel implements _ProfileModel {
 
   @override
   String toString() {
-    return 'ProfileModel(userName: $userName, userAvatar: $userAvatar)';
+    return 'ProfileModel(userID: $userID, userName: $userName, userAvatar: $userAvatar)';
   }
 
   @override
@@ -132,6 +147,7 @@ class _$_ProfileModel implements _ProfileModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileModel &&
+            (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userAvatar, userAvatar) ||
@@ -140,7 +156,7 @@ class _$_ProfileModel implements _ProfileModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userName, userAvatar);
+  int get hashCode => Object.hash(runtimeType, userID, userName, userAvatar);
 
   @JsonKey(ignore: true)
   @override
@@ -157,13 +173,16 @@ class _$_ProfileModel implements _ProfileModel {
 }
 
 abstract class _ProfileModel implements ProfileModel {
-  const factory _ProfileModel(
-      {required final String userName,
+  factory _ProfileModel(
+      {required final String userID,
+      final String userName,
       final String userAvatar}) = _$_ProfileModel;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$_ProfileModel.fromJson;
 
+  @override
+  String get userID;
   @override
   String get userName;
   @override

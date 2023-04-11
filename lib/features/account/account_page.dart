@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/config.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
+import 'package:party_potion/common_widgets/app_inactive_button_style.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
-import 'package:party_potion/features/account/alcohol/alcohol_list_page.dart';
 import 'package:party_potion/features/account/profile/profile_page.dart';
 import 'package:party_potion/features/account/friends/friends_list_page.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
@@ -36,7 +36,8 @@ class Account extends StatelessWidget {
                       side: const BorderSide(color: Colors.red),
                     ),
                   ),
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF250000)),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(const Color(0xFF250000)),
                 ),
                 icon: const Icon(
                   Icons.logout,
@@ -59,30 +60,33 @@ class Account extends StatelessWidget {
                 AppMainButtonStyle(
                   text: 'Friends list',
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => FriendsListPage()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => FriendsListPage()));
+                  },
+                ),
+                //------------------------------------------------------------------------------
+                const SizedBox(height: 10), //SPACER
+                //------------------------------------------------------------------------------
+                AppMainButtonStyle(
+                  text: 'Profile',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ProfilePage()));
                   },
                 ),
                 if (Config.appFlavor == Flavor.production)
                   (const SizedBox())
                 else
-                  (Column(children: [
+                  (Column(children: const [
                     //------------------------------------------------------------------------------
-                    const SizedBox(height: 10), //SPACER
+                    SizedBox(height: 10), //SPACER
                     //------------------------------------------------------------------------------
-                    AppMainButtonStyle(
+                    AppInactiveButtonStyle(
                       text: 'Alcohol list',
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AlcoholsListPage()));
-                      },
-                    ),
-                    //------------------------------------------------------------------------------
-                    const SizedBox(height: 10), //SPACER
-                    //------------------------------------------------------------------------------
-                    AppMainButtonStyle(
-                      text: 'Profile',
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfilePage()));
-                      },
+                      // onPressed: () {
+                      //   Navigator.of(context).push(MaterialPageRoute(
+                      //       builder: (_) => const AlcoholsListPage()));
+                      // },
                     ),
                   ])),
               ],
@@ -91,7 +95,8 @@ class Account extends StatelessWidget {
           AppMainButtonStyle(
             text: 'About',
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AboutPage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const AboutPage()));
             },
           ),
         ],

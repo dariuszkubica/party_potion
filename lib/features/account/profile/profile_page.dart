@@ -1,118 +1,126 @@
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
-import 'package:party_potion/common_widgets/app_main_button_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-import 'package:party_potion/features/account/password/password_change_page.dart';
-import 'dart:io' as io;
+import 'package:party_potion/features/account/profile/cubit/profile_cubit.dart';
+import 'package:party_potion/repositories/profile_repository.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
     Key? key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final currentUser = context.read<AuthCubit>().state.user!.uid;
-    print(currentUser);
-    return BackgroundImageWidget(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          AppMainButtonStyle(
-            text: 'Hello Dariusz!',
-            onPressed: () {
-              //suprise
-            },
-          ),
-          Stack(
-            children: [
-              const CircleAvatar(
-                radius: 150,
+    final uid = context.read<AuthCubit>().state.user?.uid;
+    final user = context.read<AuthCubit>().state.user?.email;
+    if (uid == null) {
+      return const SizedBox.shrink();
+    }
+    return BlocProvider<ProfileCubit>(
+      create: (context) => ProfileCubit(ProfileRepository())..start(),
+      child: BlocConsumer<ProfileCubit, ProfileState>(
+        listener: (context, state) {
+          if (state.status == Status.error) {
+            final errorMessage = state.errorMessage;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(errorMessage),
                 backgroundColor: Colors.red,
-                child: CircleAvatar(
-                  radius: 145,
-                  backgroundColor: Color(0xFF250000),
-                  backgroundImage: AssetImage('images/me.jpg'),
-                ),
               ),
-              Positioned(
-                bottom: 15,
-                right: 15,
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.red,
-                    ),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        50,
+            );
+          }
+        },
+        builder: (context, state) {
+          return BackgroundImageWidget(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Hello $user!',
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 150,
+                      backgroundColor: Colors.red,
+                      child: CircleAvatar(
+                        radius: 145,
+                        backgroundColor: const Color(0xFF250000),
+                        backgroundImage:
+                            NetworkImage(state.profileModel.userAvatar),
                       ),
                     ),
-                    color: const Color(0xFF250000),
-                  ),
-                  child: IconButton(
-                    iconSize: 24,
-                    onPressed: () async {
-                      final ImagePicker picker = ImagePicker();
-                      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-                      try {
-                        final XFile? file = await picker.pickImage(
-                          source: ImageSource.gallery,
-                          maxWidth: 200,
-                          maxHeight: 200,
-                          imageQuality: 100,
-                        );
-                        if (file == null) {
-                          // ignore: use_build_context_synchronously
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('No file was selected'),
-                            ),
-                          );
-                          return;
-                        }
-                        final metadata = SettableMetadata(
-                          contentType: 'image/jpeg',
-                          customMetadata: {'picked-file-path': file.path},
-                        );
-                        final ref =
-                            FirebaseStorage.instance.ref().child('users/').child(currentUser).child('/avatar.jpg');
-                        UploadTask uploadTask;
-                        if (kIsWeb) {
-                          uploadTask = ref.putData(await file.readAsBytes(), metadata);
-                        } else {
-                          uploadTask = ref.putFile(io.File(file.path), metadata);
-                        }
-                        Future.value(uploadTask);
-                      } catch (error) {
-                        // ignore: use_build_context_synchronously
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(error.toString()),
+                    Positioned(
+                      bottom: 15,
+                      right: 15,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.red,
                           ),
-                        );
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.add_a_photo,
-                      color: Colors.white,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              50,
+                            ),
+                          ),
+                          color: const Color(0xFF250000),
+                        ),
+                        child: IconButton(
+                          iconSize: 24,
+                          onPressed: () async {
+                            final picker = ImagePicker();
+                            try {
+                              final file = await picker.pickImage(
+                                source: ImageSource.gallery,
+                                maxWidth: 200,
+                                maxHeight: 200,
+                                imageQuality: 100,
+                              );
+                              if (file != null && context.mounted) {
+                                await context
+                                    .read<ProfileCubit>()
+                                    .updateUserAvatar(file: file);
+                              }
+                            } catch (error) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(error.toString()),
+                                ),
+                              );
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.add_a_photo,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          AppMainButtonStyle(
-            text: 'Change Password',
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ChangePasswordPage()));
-            },
-          ),
-        ],
+                const SizedBox(
+                  height: 100,
+                )
+                // const AppInactiveButtonStyle(
+                //   text: 'Change Password',
+                //   onPressed: () {
+                //     Navigator.of(context).push(MaterialPageRoute(
+                //         builder: (_) => const ChangePasswordPage()));
+                //   },
+                // ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
