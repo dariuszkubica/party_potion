@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/app/injection_container.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
-// import 'package:party_potion/common_widgets/ingredient_widget.dart';
+import 'package:party_potion/common_widgets/ingredient_widget.dart';
 import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 
@@ -122,9 +122,10 @@ class _DisplayCocktailWidget extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 5),
-                          // const IngredientWidget(
-                          //   cocktailModel.ingredientsList ?? [],
-                          // ),
+                          IngredientWidget(
+                            ingredientsList:
+                                cocktailModel.ingredientsList ?? [],
+                          ),
                           const SizedBox(height: 15),
                           const Text(
                             'Instruction:',
