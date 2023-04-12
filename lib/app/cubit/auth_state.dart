@@ -1,15 +1,11 @@
 part of 'auth_cubit.dart';
 
-class AuthState {
-  AuthState({
-    this.user,
-    this.isLoading,
-    this.errorMessage = '',
-    this.isCreatingAccount = false,
-  });
-
-  final User? user;
-  final bool? isLoading;
-  final String errorMessage;
-  bool isCreatingAccount;
+@freezed
+class AuthState with _$AuthState {
+  const factory AuthState({
+    User? user,
+    @Default(Status.initial) Status status,
+    @Default(false) bool isCreatingAccount,
+    @Default('') String errorMessage,
+  }) = _AuthState;
 }

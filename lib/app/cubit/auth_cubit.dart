@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/repositories/auth_repository.dart';
 
 part 'auth_state.dart';
 
+part 'auth_cubit.freezed.dart';
+
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authRepository)
       : super(
-          AuthState(
+          const AuthState(
             user: null,
-            isLoading: false,
+            status: Status.initial,
             errorMessage: '',
           ),
         );
@@ -57,9 +61,10 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> start() async {
     emit(
-      AuthState(
+      const AuthState(
         user: null,
-        isLoading: true,
+        status: Status.initial,
+        isCreatingAccount: false,
         errorMessage: '',
       ),
     );
@@ -67,8 +72,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(
         AuthState(
           user: user,
-          isLoading: false,
-          errorMessage: '',
+          status: Status.success,
         ),
       );
     })
@@ -76,7 +80,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(
           AuthState(
             user: null,
-            isLoading: false,
+            status: Status.error,
             errorMessage: error.toString(),
           ),
         );
