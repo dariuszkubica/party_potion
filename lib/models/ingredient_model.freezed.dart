@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+IngredientModel _$IngredientModelFromJson(Map<String, dynamic> json) {
+  return _IngredientModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$IngredientModel {
   String get ingredientName => throw _privateConstructorUsedError;
   String get ingredientMesure => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $IngredientModelCopyWith<IngredientModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -101,10 +106,13 @@ class __$$_IngredientModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_IngredientModel implements _IngredientModel {
   _$_IngredientModel(
       {required this.ingredientName, required this.ingredientMesure});
+
+  factory _$_IngredientModel.fromJson(Map<String, dynamic> json) =>
+      _$$_IngredientModelFromJson(json);
 
   @override
   final String ingredientName;
@@ -127,6 +135,7 @@ class _$_IngredientModel implements _IngredientModel {
                 other.ingredientMesure == ingredientMesure));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, ingredientName, ingredientMesure);
@@ -136,12 +145,22 @@ class _$_IngredientModel implements _IngredientModel {
   @pragma('vm:prefer-inline')
   _$$_IngredientModelCopyWith<_$_IngredientModel> get copyWith =>
       __$$_IngredientModelCopyWithImpl<_$_IngredientModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IngredientModelToJson(
+      this,
+    );
+  }
 }
 
 abstract class _IngredientModel implements IngredientModel {
   factory _IngredientModel(
       {required final String ingredientName,
       required final String ingredientMesure}) = _$_IngredientModel;
+
+  factory _IngredientModel.fromJson(Map<String, dynamic> json) =
+      _$_IngredientModel.fromJson;
 
   @override
   String get ingredientName;
