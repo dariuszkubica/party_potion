@@ -8,7 +8,6 @@ class IngredientWidget extends StatelessWidget {
 
   Widget createIngredientTable() {
     List<TableRow> rows = [];
-
     for (int i = 0; i < ingredientsList.length; i++) {
       rows.add(
         TableRow(
@@ -16,19 +15,21 @@ class IngredientWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  ingredientsList[i].ingredientName,
-                  style: const TextStyle(color: Colors.white),
-                ),
+                if (ingredientsList[i].ingredientName != 'null')
+                  Text(
+                    ingredientsList[i].ingredientName,
+                    style: const TextStyle(color: Colors.white),
+                  ),
               ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  ingredientsList[i].ingredientMesure,
-                  style: const TextStyle(color: Colors.white),
-                ),
+                if (ingredientsList[i].ingredientMesure != 'null')
+                  Text(
+                    ingredientsList[i].ingredientMesure,
+                    style: const TextStyle(color: Colors.white),
+                  ),
               ],
             ),
           ],
