@@ -6,7 +6,8 @@ import 'package:party_potion/features/search/cubit/search_cocktail_cubit.dart';
 import 'package:party_potion/models/cocktail_model.dart';
 import 'package:party_potion/repositories/cocktail_search_repository.dart';
 
-class MockCocktailSearchRepository extends Mock implements CocktailSearchRepository {}
+class MockCocktailSearchRepository extends Mock
+    implements CocktailSearchRepository {}
 
 void main() {
   late SearchCocktailCubit sut;
@@ -20,11 +21,13 @@ void main() {
   group('getCocktailModelByName', () {
     group('success', () {
       setUp(() {
-        when(() => repository.getCocktailModelByName(cocktailName: 'mojito')).thenAnswer(
+        when(() => repository.getCocktailModelByName(cocktailName: 'mojito'))
+            .thenAnswer(
           (_) async => CocktailModel(
             cocktailName: 'mojito',
             instructions: '',
             imageURL: 'imageURL',
+            ingredientsList: [],
           ),
         );
       });
@@ -42,6 +45,7 @@ void main() {
               cocktailName: 'mojito',
               instructions: '',
               imageURL: 'imageURL',
+              ingredientsList: [],
             ),
           ),
         ],
