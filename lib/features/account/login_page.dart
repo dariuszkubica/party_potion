@@ -5,15 +5,11 @@ import 'package:party_potion/features/account/account_page.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
 import 'package:party_potion/repositories/auth_repository.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({
+class LoginPage extends StatelessWidget {
+  LoginPage({
     Key? key,
   }) : super(key: key);
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
 
-class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -88,9 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                                     password: passwordController.text,
                                   );
                             } catch (error) {
-                              setState(() {
-                                state.errorMessage.toString();
-                              });
+                              state.errorMessage.toString();
                             }
                           } else {
                             try {
@@ -99,9 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                                     password: passwordController.text,
                                   );
                             } catch (error) {
-                              setState(() {
-                                state.errorMessage.toString();
-                              });
+                              state.errorMessage.toString();
                             }
                           }
                         },
@@ -124,9 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (state.isCreatingAccount == false) ...[
                         TextButton(
                           onPressed: () {
-                            setState(() {
-                              state.isCreatingAccount = true;
-                            });
+                            context.read<AuthCubit>().creatingAccount();
                           },
                           child: const Text('Create account'),
                         ),
@@ -134,9 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (state.isCreatingAccount) ...[
                         TextButton(
                           onPressed: () {
-                            setState(() {
-                              state.isCreatingAccount = false;
-                            });
+                            context.read<AuthCubit>().notCreatingAccount();
                           },
                           child: const Text('You have account?'),
                         ),

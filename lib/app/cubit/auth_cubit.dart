@@ -23,6 +23,24 @@ class AuthCubit extends Cubit<AuthState> {
 
   StreamSubscription? _streamSubscription;
 
+  Future<void> creatingAccount() async {
+    emit(
+      const AuthState(
+        user: null,
+        isCreatingAccount: true,
+      ),
+    );
+  }
+
+  Future<void> notCreatingAccount() async {
+    emit(
+      const AuthState(
+        user: null,
+        isCreatingAccount: false,
+      ),
+    );
+  }
+
   Future<void> signUp({
     required String email,
     required String password,

@@ -35,8 +35,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const LoginPage()));
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => LoginPage()));
                       },
                       child: CircleAvatar(
                         maxRadius: 25,
