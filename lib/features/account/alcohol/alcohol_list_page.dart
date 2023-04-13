@@ -11,14 +11,13 @@ class AlcoholsListPage extends StatefulWidget {
 }
 
 class _AlcoholsListState extends State<AlcoholsListPage> {
-  bool? _isWhisky = false;
   bool? _isVodka = false;
-  bool? _isTequila = false;
   bool? _isRum = false;
-  bool? _isVine = false;
+  bool? _isTequila = false;
+  bool? _isWhisky = false;
   bool? _isGin = false;
+  bool? _isVine = false;
   bool? _isBrandy = false;
-  bool? _isLikier = false;
 
   @override
   Widget build(BuildContext context) {
@@ -147,27 +146,6 @@ class _AlcoholsListState extends State<AlcoholsListPage> {
               onChanged: (bool? newValue) {
                 setState(() {
                   _isVine = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Likier',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Likier',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isLikier,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isLikier = newValue;
                 });
               },
               activeColor: Colors.green,
