@@ -1,181 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:party_potion/app/core/enums.dart';
+import 'package:party_potion/common_widgets/alcohol_window_style.dart';
 import 'package:party_potion/common_widgets/background_image_widget.dart';
+import 'package:party_potion/features/account/alcohol/cubit/alcohol_list_cubit.dart';
+import 'package:party_potion/repositories/alcohol_list_repository.dart';
 
-class AlcoholsListPage extends StatefulWidget {
+class AlcoholsListPage extends StatelessWidget {
   const AlcoholsListPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<AlcoholsListPage> createState() => _AlcoholsListState();
-}
-
-class _AlcoholsListState extends State<AlcoholsListPage> {
-  bool? _isVodka = false;
-  bool? _isRum = false;
-  bool? _isTequila = false;
-  bool? _isWhisky = false;
-  bool? _isGin = false;
-  bool? _isVine = false;
-  bool? _isBrandy = false;
-
-  @override
   Widget build(BuildContext context) {
-    return BackgroundImageWidget(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CheckboxListTile(
-              title: const Text('Whisky',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Balentice / RedStag / etc',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
+    return BlocProvider(
+      create: (context) => AlcoholListCubit(AlcoholListRepository())..start(),
+      child: BlocConsumer<AlcoholListCubit, AlcoholListState>(
+        listener: (context, state) {
+          if (state.status == Status.error) {
+            final errorMessage = state.errorMessage;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(errorMessage),
+                backgroundColor: Colors.red,
               ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isWhisky,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isWhisky = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
+            );
+          }
+        },
+        builder: (context, state) {
+          final alcoholModels = state.items;
+          return BackgroundImageWidget(
+            child: SingleChildScrollView(
+              reverse: true,
+              child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      for (final alcoholModel in alcoholModels)
+                        ViewAlcohol(
+                          alcoholModel: alcoholModel,
+                        ),
+                    ],
+                  )),
             ),
-            CheckboxListTile(
-              title: const Text('Vodka',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Vodka',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isVodka,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isVodka = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Rum',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Rum',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isRum,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isRum = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Tequila',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Tequila',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isTequila,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isTequila = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Brandy',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Brandy',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isBrandy,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isBrandy = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Vine',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Vine',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isVine,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isVine = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-            CheckboxListTile(
-              title: const Text('Gin',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              subtitle: const Text('Gin',
-                  style: TextStyle(fontSize: 12, color: Colors.white)),
-              secondary: const Icon(
-                Icons.local_drink_sharp,
-                color: Colors.white,
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _isGin,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  _isGin = newValue;
-                });
-              },
-              activeColor: Colors.green,
-              checkColor: Colors.black,
-              selectedTileColor: Colors.red,
-              tileColor: Colors.white10,
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
