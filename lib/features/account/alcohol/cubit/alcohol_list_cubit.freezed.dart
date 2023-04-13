@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AlcoholListState {
   Status get status => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
+  List<AlcoholModel> get items => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AlcoholListStateCopyWith<AlcoholListState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $AlcoholListStateCopyWith<$Res> {
           AlcoholListState value, $Res Function(AlcoholListState) then) =
       _$AlcoholListStateCopyWithImpl<$Res, AlcoholListState>;
   @useResult
-  $Res call({Status status, String? errorMessage});
+  $Res call({Status status, String errorMessage, List<AlcoholModel> items});
 }
 
 /// @nodoc
@@ -47,17 +48,22 @@ class _$AlcoholListStateCopyWithImpl<$Res, $Val extends AlcoholListState>
   @override
   $Res call({
     Object? status = null,
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
-      errorMessage: freezed == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<AlcoholModel>,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$_AlcoholListStateCopyWith<$Res>
       __$$_AlcoholListStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, String? errorMessage});
+  $Res call({Status status, String errorMessage, List<AlcoholModel> items});
 }
 
 /// @nodoc
@@ -85,17 +91,22 @@ class __$$_AlcoholListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
+    Object? items = null,
   }) {
     return _then(_$_AlcoholListState(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
-      errorMessage: freezed == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<AlcoholModel>,
     ));
   }
 }
@@ -103,17 +114,30 @@ class __$$_AlcoholListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AlcoholListState implements _AlcoholListState {
-  _$_AlcoholListState({this.status = Status.initial, this.errorMessage});
+  _$_AlcoholListState(
+      {this.status = Status.initial,
+      this.errorMessage = '',
+      final List<AlcoholModel> items = const []})
+      : _items = items;
 
   @override
   @JsonKey()
   final Status status;
   @override
-  final String? errorMessage;
+  @JsonKey()
+  final String errorMessage;
+  final List<AlcoholModel> _items;
+  @override
+  @JsonKey()
+  List<AlcoholModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'AlcoholListState(status: $status, errorMessage: $errorMessage)';
+    return 'AlcoholListState(status: $status, errorMessage: $errorMessage, items: $items)';
   }
 
   @override
@@ -123,11 +147,13 @@ class _$_AlcoholListState implements _AlcoholListState {
             other is _$_AlcoholListState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode => Object.hash(runtimeType, status, errorMessage,
+      const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -137,13 +163,17 @@ class _$_AlcoholListState implements _AlcoholListState {
 }
 
 abstract class _AlcoholListState implements AlcoholListState {
-  factory _AlcoholListState({final Status status, final String? errorMessage}) =
-      _$_AlcoholListState;
+  factory _AlcoholListState(
+      {final Status status,
+      final String errorMessage,
+      final List<AlcoholModel> items}) = _$_AlcoholListState;
 
   @override
   Status get status;
   @override
-  String? get errorMessage;
+  String get errorMessage;
+  @override
+  List<AlcoholModel> get items;
   @override
   @JsonKey(ignore: true)
   _$$_AlcoholListStateCopyWith<_$_AlcoholListState> get copyWith =>
