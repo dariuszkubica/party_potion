@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:party_potion/models/alcohol_model.dart';
 
 class AlcoholListRepository {
-  Stream<List<AlcoholModel>> getFriendsStream() {
+  Stream<List<AlcoholModel>> getAlcoholStream() {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
       throw Exception('User is not logged in');
@@ -12,6 +12,7 @@ class AlcoholListRepository {
         .collection('users')
         .doc(userID)
         .collection('alcohol_list')
+        .orderBy('id')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(
@@ -20,7 +21,7 @@ class AlcoholListRepository {
             id: doc.id,
             alcoholName: doc['alcohol_name'],
             alcoholUrl: doc['alcohol_url'],
-            have: false,
+            have: doc['have'],
           );
         },
       ).toList();
@@ -42,7 +43,7 @@ class AlcoholListRepository {
         .doc(id)
         .update(
       {
-        'user_name': have,
+        bool: have,
       },
     );
   }
