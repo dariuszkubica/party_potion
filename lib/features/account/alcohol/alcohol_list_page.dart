@@ -36,9 +36,27 @@ class AlcoholsListPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      for (final alcoholModel in alcoholModels)
-                        ViewAlcohol(
-                          alcoholModel: alcoholModel,
+                      if (state.items.any((element) => true))
+                        for (final alcoholModel in alcoholModels)
+                          ViewAlcohol(
+                            alcoholModel: alcoholModel,
+                          )
+                      else
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                side: const BorderSide(color: Colors.red),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color(0xFF250000)),
+                          ),
+                          onPressed: () =>
+                              context.read<AlcoholListCubit>().initiate(),
+                          child: const Text('Initiate DataBase'),
                         ),
                     ],
                   )),

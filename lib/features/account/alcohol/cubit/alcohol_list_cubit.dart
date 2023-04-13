@@ -26,4 +26,17 @@ class AlcoholListCubit extends Cubit<AlcoholListState> {
         },
       );
   }
+
+  Future<void> initiate() async {
+    try {
+      await alcoholListRepository.add();
+      emit(AlcoholListState(
+        status: Status.success,
+      ));
+    } catch (error) {
+      emit(AlcoholListState(
+        errorMessage: error.toString(),
+      ));
+    }
+  }
 }
