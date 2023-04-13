@@ -22,8 +22,8 @@ AlcoholModel _$AlcoholModelFromJson(Map<String, dynamic> json) {
 mixin _$AlcoholModel {
   String get id => throw _privateConstructorUsedError;
   String get alcoholName => throw _privateConstructorUsedError;
-  String? get alcoholUrl => throw _privateConstructorUsedError;
-  bool get have => throw _privateConstructorUsedError;
+  String get alcoholUrl => throw _privateConstructorUsedError;
+  bool? get have => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $AlcoholModelCopyWith<$Res> {
           AlcoholModel value, $Res Function(AlcoholModel) then) =
       _$AlcoholModelCopyWithImpl<$Res, AlcoholModel>;
   @useResult
-  $Res call({String id, String alcoholName, String? alcoholUrl, bool have});
+  $Res call({String id, String alcoholName, String alcoholUrl, bool? have});
 }
 
 /// @nodoc
@@ -55,8 +55,8 @@ class _$AlcoholModelCopyWithImpl<$Res, $Val extends AlcoholModel>
   $Res call({
     Object? id = null,
     Object? alcoholName = null,
-    Object? alcoholUrl = freezed,
-    Object? have = null,
+    Object? alcoholUrl = null,
+    Object? have = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -67,14 +67,14 @@ class _$AlcoholModelCopyWithImpl<$Res, $Val extends AlcoholModel>
           ? _value.alcoholName
           : alcoholName // ignore: cast_nullable_to_non_nullable
               as String,
-      alcoholUrl: freezed == alcoholUrl
+      alcoholUrl: null == alcoholUrl
           ? _value.alcoholUrl
           : alcoholUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      have: null == have
+              as String,
+      have: freezed == have
           ? _value.have
           : have // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -87,7 +87,7 @@ abstract class _$$_AlcoholModelCopyWith<$Res>
       __$$_AlcoholModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String alcoholName, String? alcoholUrl, bool have});
+  $Res call({String id, String alcoholName, String alcoholUrl, bool? have});
 }
 
 /// @nodoc
@@ -103,8 +103,8 @@ class __$$_AlcoholModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? alcoholName = null,
-    Object? alcoholUrl = freezed,
-    Object? have = null,
+    Object? alcoholUrl = null,
+    Object? have = freezed,
   }) {
     return _then(_$_AlcoholModel(
       id: null == id
@@ -115,14 +115,14 @@ class __$$_AlcoholModelCopyWithImpl<$Res>
           ? _value.alcoholName
           : alcoholName // ignore: cast_nullable_to_non_nullable
               as String,
-      alcoholUrl: freezed == alcoholUrl
+      alcoholUrl: null == alcoholUrl
           ? _value.alcoholUrl
           : alcoholUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      have: null == have
+              as String,
+      have: freezed == have
           ? _value.have
           : have // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -134,7 +134,7 @@ class _$_AlcoholModel implements _AlcoholModel {
       {required this.id,
       required this.alcoholName,
       required this.alcoholUrl,
-      required this.have});
+      this.have = false});
 
   factory _$_AlcoholModel.fromJson(Map<String, dynamic> json) =>
       _$$_AlcoholModelFromJson(json);
@@ -144,9 +144,10 @@ class _$_AlcoholModel implements _AlcoholModel {
   @override
   final String alcoholName;
   @override
-  final String? alcoholUrl;
+  final String alcoholUrl;
   @override
-  final bool have;
+  @JsonKey()
+  final bool? have;
 
   @override
   String toString() {
@@ -189,8 +190,8 @@ abstract class _AlcoholModel implements AlcoholModel {
   factory _AlcoholModel(
       {required final String id,
       required final String alcoholName,
-      required final String? alcoholUrl,
-      required final bool have}) = _$_AlcoholModel;
+      required final String alcoholUrl,
+      final bool? have}) = _$_AlcoholModel;
 
   factory _AlcoholModel.fromJson(Map<String, dynamic> json) =
       _$_AlcoholModel.fromJson;
@@ -200,9 +201,9 @@ abstract class _AlcoholModel implements AlcoholModel {
   @override
   String get alcoholName;
   @override
-  String? get alcoholUrl;
+  String get alcoholUrl;
   @override
-  bool get have;
+  bool? get have;
   @override
   @JsonKey(ignore: true)
   _$$_AlcoholModelCopyWith<_$_AlcoholModel> get copyWith =>

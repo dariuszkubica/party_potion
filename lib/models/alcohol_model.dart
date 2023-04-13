@@ -8,8 +8,8 @@ class AlcoholModel with _$AlcoholModel {
   factory AlcoholModel({
     required String id,
     required String alcoholName,
-    required String? alcoholUrl,
-    required bool have,
+    required String alcoholUrl,
+    @Default(false) bool? have,
   }) = _AlcoholModel;
 
   factory AlcoholModel.fromJson(Map<String, dynamic> json) =>
