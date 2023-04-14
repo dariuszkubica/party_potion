@@ -82,7 +82,7 @@ class AlcoholListRepository {
 
   Future<void> update({
     required String id,
-    required bool have,
+    required String have,
   }) {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
@@ -95,7 +95,7 @@ class AlcoholListRepository {
         .doc(id)
         .update(
       {
-        bool: have,
+        'have': have,
       },
     );
   }

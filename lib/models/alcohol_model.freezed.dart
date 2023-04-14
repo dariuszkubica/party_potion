@@ -23,7 +23,7 @@ mixin _$AlcoholModel {
   String get id => throw _privateConstructorUsedError;
   String get alcoholName => throw _privateConstructorUsedError;
   String get alcoholUrl => throw _privateConstructorUsedError;
-  bool? get have => throw _privateConstructorUsedError;
+  String get have => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $AlcoholModelCopyWith<$Res> {
           AlcoholModel value, $Res Function(AlcoholModel) then) =
       _$AlcoholModelCopyWithImpl<$Res, AlcoholModel>;
   @useResult
-  $Res call({String id, String alcoholName, String alcoholUrl, bool? have});
+  $Res call({String id, String alcoholName, String alcoholUrl, String have});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$AlcoholModelCopyWithImpl<$Res, $Val extends AlcoholModel>
     Object? id = null,
     Object? alcoholName = null,
     Object? alcoholUrl = null,
-    Object? have = freezed,
+    Object? have = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,10 +71,10 @@ class _$AlcoholModelCopyWithImpl<$Res, $Val extends AlcoholModel>
           ? _value.alcoholUrl
           : alcoholUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      have: freezed == have
+      have: null == have
           ? _value.have
           : have // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String,
     ) as $Val);
   }
 }
@@ -87,7 +87,7 @@ abstract class _$$_AlcoholModelCopyWith<$Res>
       __$$_AlcoholModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String alcoholName, String alcoholUrl, bool? have});
+  $Res call({String id, String alcoholName, String alcoholUrl, String have});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$_AlcoholModelCopyWithImpl<$Res>
     Object? id = null,
     Object? alcoholName = null,
     Object? alcoholUrl = null,
-    Object? have = freezed,
+    Object? have = null,
   }) {
     return _then(_$_AlcoholModel(
       id: null == id
@@ -119,10 +119,10 @@ class __$$_AlcoholModelCopyWithImpl<$Res>
           ? _value.alcoholUrl
           : alcoholUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      have: freezed == have
+      have: null == have
           ? _value.have
           : have // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String,
     ));
   }
 }
@@ -134,7 +134,7 @@ class _$_AlcoholModel implements _AlcoholModel {
       {required this.id,
       required this.alcoholName,
       required this.alcoholUrl,
-      this.have = false});
+      this.have = 'Don\'t have'});
 
   factory _$_AlcoholModel.fromJson(Map<String, dynamic> json) =>
       _$$_AlcoholModelFromJson(json);
@@ -147,7 +147,7 @@ class _$_AlcoholModel implements _AlcoholModel {
   final String alcoholUrl;
   @override
   @JsonKey()
-  final bool? have;
+  final String have;
 
   @override
   String toString() {
@@ -191,7 +191,7 @@ abstract class _AlcoholModel implements AlcoholModel {
       {required final String id,
       required final String alcoholName,
       required final String alcoholUrl,
-      final bool? have}) = _$_AlcoholModel;
+      final String have}) = _$_AlcoholModel;
 
   factory _AlcoholModel.fromJson(Map<String, dynamic> json) =
       _$_AlcoholModel.fromJson;
@@ -203,7 +203,7 @@ abstract class _AlcoholModel implements AlcoholModel {
   @override
   String get alcoholUrl;
   @override
-  bool? get have;
+  String get have;
   @override
   @JsonKey(ignore: true)
   _$$_AlcoholModelCopyWith<_$_AlcoholModel> get copyWith =>

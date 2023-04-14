@@ -9,7 +9,7 @@ class AlcoholModel with _$AlcoholModel {
     required String id,
     required String alcoholName,
     required String alcoholUrl,
-    @Default(false) bool? have,
+    @Default('Don\'t have') String have,
   }) = _AlcoholModel;
 
   factory AlcoholModel.fromJson(Map<String, dynamic> json) =>
