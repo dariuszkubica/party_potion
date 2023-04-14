@@ -50,7 +50,9 @@ class ViewAlcohol extends StatelessWidget {
                     color: Colors.white),
               ),
               Text(
-                alcoholModel.have,
+                (alcoholModel.have == 'Don\'t have')
+                    ? 'Don\'t have'
+                    : '${alcoholModel.have} ml',
                 style: const TextStyle(color: Colors.grey, fontSize: 16),
               ),
             ],
