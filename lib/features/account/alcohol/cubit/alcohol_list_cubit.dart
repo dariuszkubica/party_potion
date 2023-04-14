@@ -30,13 +30,40 @@ class AlcoholListCubit extends Cubit<AlcoholListState> {
   Future<void> initiate() async {
     try {
       await alcoholListRepository.add();
-      emit(AlcoholListState(
-        status: Status.success,
-      ));
+      emit(
+        AlcoholListState(
+          status: Status.success,
+        ),
+      );
     } catch (error) {
-      emit(AlcoholListState(
-        errorMessage: error.toString(),
-      ));
+      emit(
+        AlcoholListState(
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> update({
+    required String id,
+    required String have,
+  }) async {
+    try {
+      await alcoholListRepository.update(
+        id: id,
+        have: have,
+      );
+      emit(
+        AlcoholListState(
+          status: Status.success,
+        ),
+      );
+    } catch (error) {
+      emit(
+        AlcoholListState(
+          errorMessage: error.toString(),
+        ),
+      );
     }
   }
 }
