@@ -144,17 +144,48 @@ class _UpdateAlcoholBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Column(
         children: [
-          Text(
-            id.toUpperCase(),
-            style: const TextStyle(
-                color: Colors.red, fontSize: 24, fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(
+                width: 48,
+              ),
+              Text(
+                id.toUpperCase(),
+                style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+              IconButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Center(
+                          child: Text(
+                        '1L = 1000ml',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.info_outline,
+                  color: Colors.white54,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 20),
           TextField(
             controller: controller,
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -175,7 +206,6 @@ class _UpdateAlcoholBody extends StatelessWidget {
             ),
             style: const TextStyle(color: Colors.white),
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );
