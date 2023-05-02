@@ -19,7 +19,7 @@ mixin _$CocktailState {
   Status get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   String get alcohol => throw _privateConstructorUsedError;
-  DrinksDTO? get models => throw _privateConstructorUsedError;
+  CocktailsDto? get model => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CocktailStateCopyWith<CocktailState> get copyWith =>
@@ -33,9 +33,12 @@ abstract class $CocktailStateCopyWith<$Res> {
       _$CocktailStateCopyWithImpl<$Res, CocktailState>;
   @useResult
   $Res call(
-      {Status status, String? errorMessage, String alcohol, DrinksDTO? models});
+      {Status status,
+      String? errorMessage,
+      String alcohol,
+      CocktailsDto? model});
 
-  $DrinksDTOCopyWith<$Res>? get models;
+  $CocktailsDtoCopyWith<$Res>? get model;
 }
 
 /// @nodoc
@@ -54,7 +57,7 @@ class _$CocktailStateCopyWithImpl<$Res, $Val extends CocktailState>
     Object? status = null,
     Object? errorMessage = freezed,
     Object? alcohol = null,
-    Object? models = freezed,
+    Object? model = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -69,22 +72,22 @@ class _$CocktailStateCopyWithImpl<$Res, $Val extends CocktailState>
           ? _value.alcohol
           : alcohol // ignore: cast_nullable_to_non_nullable
               as String,
-      models: freezed == models
-          ? _value.models
-          : models // ignore: cast_nullable_to_non_nullable
-              as DrinksDTO?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as CocktailsDto?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DrinksDTOCopyWith<$Res>? get models {
-    if (_value.models == null) {
+  $CocktailsDtoCopyWith<$Res>? get model {
+    if (_value.model == null) {
       return null;
     }
 
-    return $DrinksDTOCopyWith<$Res>(_value.models!, (value) {
-      return _then(_value.copyWith(models: value) as $Val);
+    return $CocktailsDtoCopyWith<$Res>(_value.model!, (value) {
+      return _then(_value.copyWith(model: value) as $Val);
     });
   }
 }
@@ -98,10 +101,13 @@ abstract class _$$_CocktailStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Status status, String? errorMessage, String alcohol, DrinksDTO? models});
+      {Status status,
+      String? errorMessage,
+      String alcohol,
+      CocktailsDto? model});
 
   @override
-  $DrinksDTOCopyWith<$Res>? get models;
+  $CocktailsDtoCopyWith<$Res>? get model;
 }
 
 /// @nodoc
@@ -118,7 +124,7 @@ class __$$_CocktailStateCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = freezed,
     Object? alcohol = null,
-    Object? models = freezed,
+    Object? model = freezed,
   }) {
     return _then(_$_CocktailState(
       status: null == status
@@ -133,10 +139,10 @@ class __$$_CocktailStateCopyWithImpl<$Res>
           ? _value.alcohol
           : alcohol // ignore: cast_nullable_to_non_nullable
               as String,
-      models: freezed == models
-          ? _value.models
-          : models // ignore: cast_nullable_to_non_nullable
-              as DrinksDTO?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as CocktailsDto?,
     ));
   }
 }
@@ -148,7 +154,7 @@ class _$_CocktailState implements _CocktailState {
       {this.status = Status.initial,
       this.errorMessage,
       this.alcohol = '',
-      this.models});
+      this.model});
 
   @override
   @JsonKey()
@@ -159,11 +165,11 @@ class _$_CocktailState implements _CocktailState {
   @JsonKey()
   final String alcohol;
   @override
-  final DrinksDTO? models;
+  final CocktailsDto? model;
 
   @override
   String toString() {
-    return 'CocktailState(status: $status, errorMessage: $errorMessage, alcohol: $alcohol, models: $models)';
+    return 'CocktailState(status: $status, errorMessage: $errorMessage, alcohol: $alcohol, model: $model)';
   }
 
   @override
@@ -175,12 +181,12 @@ class _$_CocktailState implements _CocktailState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.alcohol, alcohol) || other.alcohol == alcohol) &&
-            (identical(other.models, models) || other.models == models));
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, errorMessage, alcohol, models);
+      Object.hash(runtimeType, status, errorMessage, alcohol, model);
 
   @JsonKey(ignore: true)
   @override
@@ -194,7 +200,7 @@ abstract class _CocktailState implements CocktailState {
       {final Status status,
       final String? errorMessage,
       final String alcohol,
-      final DrinksDTO? models}) = _$_CocktailState;
+      final CocktailsDto? model}) = _$_CocktailState;
 
   @override
   Status get status;
@@ -203,7 +209,7 @@ abstract class _CocktailState implements CocktailState {
   @override
   String get alcohol;
   @override
-  DrinksDTO? get models;
+  CocktailsDto? get model;
   @override
   @JsonKey(ignore: true)
   _$$_CocktailStateCopyWith<_$_CocktailState> get copyWith =>

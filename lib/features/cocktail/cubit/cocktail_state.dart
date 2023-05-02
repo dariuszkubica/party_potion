@@ -6,6 +6,6 @@ class CocktailState with _$CocktailState {
     @Default(Status.initial) Status status,
     String? errorMessage,
     @Default('') String alcohol,
-    DrinksDTO? models,
+    CocktailsDto? model,
   }) = _CocktailState;
 }

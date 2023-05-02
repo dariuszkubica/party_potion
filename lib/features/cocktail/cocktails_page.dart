@@ -123,9 +123,9 @@ class _DisplayCocktails extends StatelessWidget {
           crossAxisSpacing: 5,
           crossAxisCount: 2,
           children: [
-            for (final drinkDTO in state.models?.drinks ?? []) ...[
+            for (final drink in state.model?.drinks ?? []) ...[
               CocktailWindowSmall(
-                drinkDTO: drinkDTO,
+                cocktailDto: drink,
               ),
             ],
           ],

@@ -20,13 +20,13 @@ class _CocktailIngredientRemoteRetroFitDataSource
   String? baseUrl;
 
   @override
-  Future<DrinksDTO> getCocktailDataByAlcohol(alcoholName) async {
+  Future<CocktailsDto> getCocktailDataByAlcohol(alcoholName) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'i': alcoholName};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<DrinksDTO>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<CocktailsDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -38,7 +38,7 @@ class _CocktailIngredientRemoteRetroFitDataSource
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = DrinksDTO.fromJson(_result.data!);
+    final value = CocktailsDto.fromJson(_result.data!);
     return value;
   }
 

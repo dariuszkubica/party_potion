@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:party_potion/app/core/enums.dart';
-import 'package:party_potion/models/drinks_dto.dart';
+import 'package:party_potion/models/cocktail_dto.dart';
 import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 
 part 'cocktail_state.dart';
@@ -10,7 +10,8 @@ part 'cocktail_cubit.freezed.dart';
 
 @injectable
 class CocktailCubit extends Cubit<CocktailState> {
-  CocktailCubit({required this.cocktailIngredientRepository}) : super(CocktailState());
+  CocktailCubit({required this.cocktailIngredientRepository})
+      : super(CocktailState());
 
   final CocktailIngredientRepository cocktailIngredientRepository;
 
@@ -22,12 +23,13 @@ class CocktailCubit extends Cubit<CocktailState> {
     );
     try {
       try {
-        final drinks = await cocktailIngredientRepository.getCocktailModelsByAlcohol(alcoholName: alcoholName);
+        final drinks = await cocktailIngredientRepository
+            .getCocktailModelsByAlcohol(alcoholName: alcoholName);
         emit(
           CocktailState(
             status: Status.success,
             alcohol: alcoholName,
-            models: drinks,
+            model: drinks,
           ),
         );
       } catch (error) {
