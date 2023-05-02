@@ -28,7 +28,7 @@ class AlcoholListRepository {
     });
   }
 
-  Future<void> add() async {
+  Future<void> initiate() async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
       throw Exception('User is not logged in');

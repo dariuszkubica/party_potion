@@ -29,7 +29,7 @@ class AlcoholListCubit extends Cubit<AlcoholListState> {
 
   Future<void> initiate() async {
     try {
-      await alcoholListRepository.add();
+      await alcoholListRepository.initiate();
       emit(
         AlcoholListState(
           status: Status.success,
