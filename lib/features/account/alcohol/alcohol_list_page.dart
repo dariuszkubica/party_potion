@@ -33,33 +33,35 @@ class AlcoholsListPage extends StatelessWidget {
             child: SingleChildScrollView(
               reverse: true,
               child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      if (state.items.any((element) => true))
-                        for (final alcoholModel in alcoholModels)
-                          ViewAlcohol(
-                            alcoholModel: alcoholModel,
-                          )
-                      else
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                side: const BorderSide(color: Colors.red),
-                              ),
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    if (state.items.any((element) => true))
+                      for (final alcoholModel in alcoholModels)
+                        ViewAlcohol(
+                          alcoholModel: alcoholModel,
+                        )
+                    else
+                      //implement CircularProgressIndicator => auto Initiate DataBase => Auto refresh Page
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: const BorderSide(color: Colors.red),
                             ),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color(0xFF250000)),
                           ),
-                          onPressed: () =>
-                              context.read<AlcoholListCubit>().initiate(),
-                          child: const Text('Initiate DataBase'),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xFF250000)),
                         ),
-                    ],
-                  )),
+                        onPressed: () =>
+                            context.read<AlcoholListCubit>().initiate(),
+                        child: const Text('Initiate DataBase'),
+                      ),
+                  ],
+                ),
+              ),
             ),
           );
         },
