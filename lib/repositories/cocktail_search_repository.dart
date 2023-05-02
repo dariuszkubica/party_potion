@@ -6,13 +6,16 @@ import 'package:party_potion/models/ingredient_model.dart';
 
 @injectable
 class CocktailSearchRepository {
-  CocktailSearchRepository(
-      {required this.cocktailSearchRemoteRetroFitDataSource});
+  CocktailSearchRepository({
+    required this.cocktailSearchRemoteRetroFitDataSource,
+  });
 
   final CocktailSearchRemoteRetroFitDataSource
       cocktailSearchRemoteRetroFitDataSource;
 
-  List<CocktailModel> convertToCocktailModel(CocktailsDto cocktailsDto) {
+  List<CocktailModel> convertToCocktailModel(
+    CocktailsDto cocktailsDto,
+  ) {
     return cocktailsDto.drinks.map((drink) {
       return CocktailModel(
         cocktailName: drink.strDrink ?? '',
