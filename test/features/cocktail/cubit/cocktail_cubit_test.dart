@@ -3,10 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:party_potion/app/core/enums.dart';
 import 'package:party_potion/features/cocktail/cubit/cocktail_cubit.dart';
-import 'package:party_potion/models/drinks_dto.dart';
+import 'package:party_potion/models/cocktail_dto.dart';
 import 'package:party_potion/repositories/cocktail_ingredient_repository.dart';
 
-class MockCocktailIngredientRepository extends Mock implements CocktailIngredientRepository {}
+class MockCocktailIngredientRepository extends Mock
+    implements CocktailIngredientRepository {}
 
 void main() {
   late CocktailCubit sut;
@@ -20,12 +21,25 @@ void main() {
   group('getCocktailModelsByAlcohol', () {
     group('success', () {
       setUp(() {
-        when(() => repository.getCocktailModelsByAlcohol(alcoholName: 'vodka')).thenAnswer(
-          (_) async => const DrinksDTO(
+        when(() => repository.getCocktailModelsByAlcohol(alcoholName: 'vodka'))
+            .thenAnswer(
+          (_) async => const CocktailsDto(
             drinks: [
-              DrinkDTO(strDrink: 'avalon'),
-              DrinkDTO(strDrink: 'cosmopolitan'),
-              DrinkDTO(strDrink: 'kamikaze'),
+              CocktailDto(
+                strDrink: 'avalon',
+                strDrinkThumb: '',
+                strInstructions: '',
+              ),
+              CocktailDto(
+                strDrink: 'cosmopolitan',
+                strDrinkThumb: '',
+                strInstructions: '',
+              ),
+              CocktailDto(
+                strDrink: 'kamikaze',
+                strDrinkThumb: '',
+                strInstructions: '',
+              ),
             ],
           ),
         );
@@ -41,11 +55,23 @@ void main() {
           CocktailState(
             status: Status.success,
             alcohol: 'vodka',
-            models: const DrinksDTO(
+            model: const CocktailsDto(
               drinks: [
-                DrinkDTO(strDrink: 'avalon'),
-                DrinkDTO(strDrink: 'cosmopolitan'),
-                DrinkDTO(strDrink: 'kamikaze'),
+                CocktailDto(
+                  strDrink: 'avalon',
+                  strDrinkThumb: '',
+                  strInstructions: '',
+                ),
+                CocktailDto(
+                  strDrink: 'cosmopolitan',
+                  strDrinkThumb: '',
+                  strInstructions: '',
+                ),
+                CocktailDto(
+                  strDrink: 'kamikaze',
+                  strDrinkThumb: '',
+                  strInstructions: '',
+                ),
               ],
             ),
           ),
