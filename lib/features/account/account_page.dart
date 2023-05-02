@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:party_potion/app/core/config.dart';
 import 'package:party_potion/app/cubit/auth_cubit.dart';
-import 'package:party_potion/common_widgets/app_inactive_button_style.dart';
 import 'package:party_potion/features/account/about/about_page.dart';
+import 'package:party_potion/features/account/alcohol/alcohol_list_page.dart';
 import 'package:party_potion/features/account/profile/profile_page.dart';
 import 'package:party_potion/features/account/friends/friends_list_page.dart';
 import 'package:party_potion/common_widgets/app_main_button_style.dart';
@@ -74,21 +73,16 @@ class Account extends StatelessWidget {
                         MaterialPageRoute(builder: (_) => const ProfilePage()));
                   },
                 ),
-                if (Config.appFlavor == Flavor.production)
-                  (const SizedBox())
-                else
-                  (Column(children: const [
-                    //------------------------------------------------------------------------------
-                    SizedBox(height: 10), //SPACER
-                    //------------------------------------------------------------------------------
-                    AppInactiveButtonStyle(
-                      text: 'Alcohol list',
-                      // onPressed: () {
-                      //   Navigator.of(context).push(MaterialPageRoute(
-                      //       builder: (_) => const AlcoholsListPage()));
-                      // },
-                    ),
-                  ])),
+                //------------------------------------------------------------------------------
+                const SizedBox(height: 10), //SPACER
+                //------------------------------------------------------------------------------
+                AppMainButtonStyle(
+                  text: 'Alcohol list',
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const AlcoholsListPage()));
+                  },
+                ),
               ],
             ),
           ),
