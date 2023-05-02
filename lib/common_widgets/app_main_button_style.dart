@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppMainButtonStyle extends StatelessWidget {
-  final Function onPressed;
   const AppMainButtonStyle({
     Key? key,
     required this.text,
     required this.onPressed,
   }) : super(key: key);
 
+  final Function onPressed;
   final String text;
 
   @override

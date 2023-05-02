@@ -134,7 +134,7 @@ class _$_AlcoholModel implements _AlcoholModel {
       {required this.id,
       required this.alcoholName,
       required this.alcoholUrl,
-      this.have = 'Don\'t have'});
+      this.have = '0'});
 
   factory _$_AlcoholModel.fromJson(Map<String, dynamic> json) =>
       _$$_AlcoholModelFromJson(json);

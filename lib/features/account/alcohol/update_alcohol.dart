@@ -6,13 +6,14 @@ import 'package:party_potion/features/account/alcohol/cubit/alcohol_list_cubit.d
 import 'package:party_potion/repositories/alcohol_list_repository.dart';
 
 class UpdateAlcohol extends StatelessWidget {
-  UpdateAlcohol({
+  const UpdateAlcohol({
     Key? key,
     required this.id,
+    this.have,
   }) : super(key: key);
 
   final String id;
-  String? have;
+  final String? have;
 
   @override
   Widget build(BuildContext context) {
